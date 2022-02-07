@@ -1,22 +1,22 @@
-## Additional containers
+## Дополнительные контейнеры
 
 ### Array
 
 <details>
-  <summary>General information</summary>
+  <summary>Общая информация</summary>
 <br />
 
-Array is a sequence container that encapsulates a static array. You cannot add new elements to an array container, you can only modify the value of the original ones. In terms of interaction, a container array combines the obvious properties of a static array with the main advantage of container classes - a clearer organisation of data. For example, an Array container stores the size of an array and provides iterators. Just like a vector, an array occupies a sequential part of memory and can be passed to a function as a standard array in C.
+Array (массив) - это последовательный контейнер, инкапсулирующий в себе статический массив. В контейнер array нельзя добавить новый элементы, можно только модифицировать значение заданных изначально. В плане взаимодействия, контейнер array сочетает в себе очевидные свойства статического массива с основным достоинством контейнерных классов - более четкой организацией данных. Например, контейнер Array хранит размер массива и предоставляет итераторы. Так же как и vector, array занимает последовательную часть памяти и может быть передан в функцию как стандартный массив в Си.
 
 </details>
 
 <details>
-  <summary>Specification</summary>
+  <summary>Спецификация</summary>
 <br />
 
 *Array Member type*
 
-This table contains in-class type overrides (typical for the standard STL library) that are adopted to make class code easy to understand:
+В этой таблице перечислены внутриклассовые переопределения типов (типичные для стандартной библиотеки STL), принятые для удобства восприятия кода класса:
 
 | Member type            | definition                                                                             |
 |------------------------|----------------------------------------------------------------------------------------|
@@ -29,33 +29,33 @@ This table contains in-class type overrides (typical for the standard STL librar
 
 *Array Member functions*
 
-This table contains the main public methods for interacting with the class:
+В этой таблице перечислены основные публичные методы для взаимодействия с классом:
 
 | Functions      | Definition                                      |
 |----------------|-------------------------------------------------|
-| `array()`  | default constructor, creates an empty array                                 |
+| `array()`  | default constructor, creates empty array                                 |
 | `array(size_type n)`  | parameterized constructor, creates the array of size n                                 |
 | `array(std::initializer_list<value_type> const &items)`  | initializer list constructor, creates array initizialized using std::initializer_list<T>    |
 | `array(const array &a)`  | copy constructor  |
 | `array(array &&a)`  | move constructor  |
 | `~array()`  | destructor  |
-| `operator=(array &&a)`      | assignment operator overload for moving an object                                |
+| `operator=(array &&a)`      | assignment operator overload for moving object                                |
 
 *Array Element access*
 
-This table contains the public methods for accessing the elements of the class:
+В этой таблице перечислены публичные методы для доступа к элементам класса:
 
 | Element access         | Definition                                                                             |
 |------------------------|----------------------------------------------------------------------------------------|
-| `reference at(size_type pos)`                     | access a specified element with bounds checking                                          |
-| `reference operator[](size_type pos)`             | access a specified element                                                               |
+| `reference at(size_type pos)`                     | access specified element with bounds checking                                          |
+| `reference operator[](size_type pos)`             | access specified element                                                               |
 | `const_reference front()`          | access the first element                        |
 | `const_reference back()`           | access the last element                         |
 | `iterator data()`                   | direct access to the underlying array                                                  |
 
 *Array Iterators*
 
-This table contains the public methods for iterating over class elements (access to iterators):
+В этой таблице перечислены публичные методы для итерирования по элементам класса (доступ к итераторам):
 
 | Iterators      | Definition                                      |
 |----------------|-------------------------------------------------|
@@ -64,7 +64,7 @@ This table contains the public methods for iterating over class elements (access
 
 *Array Capacity*
 
-This table contains the public methods for accessing the container capacity information:
+В этой таблице перечислены публичные методы для доступа к информации о наполнении контейнера:
 
 | Capacity               | Definition                                                                             |
 |------------------------|----------------------------------------------------------------------------------------|
@@ -74,32 +74,33 @@ This table contains the public methods for accessing the container capacity info
 
 *Array Modifiers*
 
-This table contains the public methods for modifying a container:
+В этой таблице перечислены публичные методы для изменения контейнера:
 
 | Modifiers      | Definition                                      |
 |----------------|-------------------------------------------------|
 | `void swap(array& other)`                   | swaps the contents                                |
-| `void fill(const_reference value);`         | assigns the given value to all elements in the container. |
+| `void fill(const_reference value);`         | assigns the given value value to all elements in the container. |
+
 
 </details>
 
-### Multiset
+### Multiset 
 
 <details>
-  <summary>General information</summary>
+  <summary>Общая информация</summary>
 <br />
 
-Multiset is an associative container that follows the logic of a set, but allows identical elements to be stored. This container is different from a list or vector because the elements in the multiset are sorted instantly, just as in a set. But just like a set, a multiset does not allow you to refer to an element by its index, but requires referring to its value, which can be repeated in a multiset.
+Multiset (мультимножество) - это ассоциативный контейнер, повторяющий логику множества, но позволяющий хранить идентичные элементы. Такой контейнер отличается от списка или вектора тем, что элементы при попадании в мультимножество так же, как и в множестве, сортируются на лету. Однако так же, как и множество, мультимножество не позволяет обратиться к элементу по индексу, а требует обращения по значению, которое в мультимножестве может повторяться.
 
 </details>
 
 <details>
-  <summary>Specification</summary>
+  <summary>Спецификация</summary>
 <br />
 
 *Multiset Member type*
 
-This table contains in-class type overrides (typical for the standard STL library) that are adopted to make class code easy to understand:
+В этой таблице перечислены внутриклассовые переопределения типов (типичные для стандартной библиотеки STL), принятые для удобства восприятия кода класса:
 
 | Member type            | Definition                                                                             |
 |------------------------|----------------------------------------------------------------------------------------|
@@ -113,29 +114,30 @@ This table contains in-class type overrides (typical for the standard STL librar
 
 *Multiset Member functions*
 
-This table contains the main public methods for interacting with the class:
+В этой таблице перечислены основные публичные методы для взаимодействия с классом:
 
 | Member functions      | Definition                                      |
 |----------------|-------------------------------------------------|
-| `multiset()`  | default constructor, creates an empty set                                 |
+| `multiset()`  | default constructor, creates empty set                                 |
 | `multiset(std::initializer_list<value_type> const &items)`  | initializer list constructor, creates the set initizialized using std::initializer_list<T>    |
 | `multiset(const multiset &ms)`  | copy constructor  |
 | `multiset(multiset &&ms)`  | move constructor  |
 | `~multiset()`  | destructor  |
-| `operator=(multiset &&ms)`      | assignment operator overload for moving an object                                |
+| `operator=(multiset &&ms)`      | assignment operator overload for moving object                                |
 
 *Multiset Iterators*
 
-This table contains the public methods for iterating over class elements (access to iterators):
+В этой таблице перечислены публичные методы для итерирования по элементам класса (доступ к итераторам):
 
 | Iterators              | Definition                                                                             |
 |------------------------|----------------------------------------------------------------------------------------|
 | `iterator begincbegin()`            | returns an iterator to the beginning                                                   |
 | `iterator endcend()`                | returns an iterator to the end                                                         |
 
+
 *Multiset Capacity*
 
-This table contains the public methods for accessing the container capacity information:
+В этой таблице перечислены публичные методы для доступа к информации о наполнении контейнера:
 
 | Capacity       | Definition                                      |
 |----------------|-------------------------------------------------|
@@ -145,28 +147,28 @@ This table contains the public methods for accessing the container capacity info
 
 *Multiset Modifiers*
 
-This table contains the public methods for modifying a container:
+В этой таблице перечислены публичные методы для изменения контейнера:
 
 | Modifiers              | Definition                                                                             |
 |------------------------|----------------------------------------------------------------------------------------|
 | `void clear()`                  | clears the contents                                                                    |
-| `iterator insert(const value_type& value)`                 | inserts a node and returns an iterator to where the element is in the container and bool denoting whether the insertion took place                                        |
-| `iterator insert(const Key& key, const T& obj)`                 | inserts a value by key and returns an iterator to where the element is in the container and bool denoting whether the insertion took place    |
-| `void erase(iterator pos)`                  | erases an element at pos                                                                        |
+| `iterator insert(const value_type& value)`                 | inserts node and returns iterator to where the element is in the container and bool denoting whether the insertion took place                                        |
+| `iterator insert(const Key& key, const T& obj)`                 | inserts value by key and returns iterator to where the element is in the container and bool denoting whether the insertion took place    |
+| `void erase(iterator pos)`                  | erases element at pos                                                                        |
 | `void swap(multiset& other)`                   | swaps the contents                                                                     |
 | `void merge(multiset& other)`                  | splices nodes from another container                                                   |
 
 *Multiset Lookup*
 
-This table contains the public methods for viewing the container:
+В этой таблице перечислены публичные методы, осуществляющие просмотр контейнера:
 
 | Lookup                 | Definition                                                                             |
 |------------------------|----------------------------------------------------------------------------------------|
-| `size_type count(const Key& key)`                  | returns the number of elements matching a specific key                                   |
-| `iterator find(const Key& key)`                   | finds element with a specific key                                                        |
-| `bool contains(const Key& key)`               | checks if the container contains element with a specific key                             |
+| `size_type count(const Key& key)`                  | returns the number of elements matching specific key                                   |
+| `iterator find(const Key& key)`                   | finds element with specific key                                                        |
+| `bool contains(const Key& key)`               | checks if the container contains element with specific key                             |
 | `std::pair<iterator,iterator> equal_range(const Key& key)`            | returns range of elements matching a specific key                                      |
-| `iterator lower_bound(const Key& key)`            | returns an iterator to the first element not less than the given key                   |
-| `iterator upper_bound(const Key& key)`            | returns an iterator to the first element greater than the given key                    |
+| `iterator lower_bound(const Key& key)`            | returns an iterator to the first element not less than the given key                   |
+| `iterator upper_bound(const Key& key)`            | returns an iterator to the first element greater than the given key                    |
 
 </details>
