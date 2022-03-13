@@ -103,17 +103,17 @@
 
 Необходимо реализовать классы библиотеки `s21_containers.h` (спецификации указаны в соответствующих разделах материалов, см. пункт **"Основные контейнеры"**). \
 Список классов: `list` (список), `map` (словарь), `queue` (очередь), `set` (множество), `stack` (стек), `vector` (вектор).
-- Оформить решение как статическую библиотеку (с заголовочным файлом `s21_containers.h`)
-- Предусмотреть Makefile для сборки библиотеки и тестов (с целями all, clean, test, s21_containers.a)
+- Оформить решение в виде заголовочного файла `s21_containers.h`, который включает в себя другие заголовочные файлы с реализациями необходимых контейнеров (`s21_list.h`, `s21_map.h` и т.д.)
+- Предусмотреть Makefile для тестов написанной библиотеки (с целями clean, test)
 
 *Подсказка*: Вы можете выделять в базовые классы одинаковую реализацию методов контейнеров. Например, для очереди и стека или для списка и вектора. В качестве *одного из возможных примеров* иерархического построения в материалах представлена UML-диаграмма библиотеки STL. Однако ваша реализация не обязана быть строго привязана к этой UML-диаграмме.
 
 ### Part 2. Дополнительно. Реализация библиотеки s21_containersplus.h
 
-Необходимо реализовать функции библиотки `s21_containersplus.h` (спецификации указаны в соответствующих разделах материалов, см. пункт **"Дополнительные контейнеры"**). \
+Необходимо реализовать функции библиотеки `s21_containersplus.h` (спецификации указаны в соответствующих разделах материалов, см. пункт **"Дополнительные контейнеры"**). \
 Список классов, которые нужно реализовать дополнительно: `array` (массив), `multiset` (мультимножество).
-- Оформить решение как статическую библиотеку (с заголовочным файлом `s21_containersplus.h`)
-- Предусмотреть Makefile для сборки библиотеки и тестов (с целями all, clean, test, s21_containersplus.a)
+- Оформить решение в виде заголовочного файла `s21_containersplus.h`, который включает в себя другие заголовочные файлы с реализациями необходимых контейнеров (`s21_array.h`, `s21_multiset.h`)
+- Предусмотреть Makefile для тестов написанной библиотеки (с целями clean, test)
 
 ### Part 3. Дополнительно. Реализация методов `emplace`
 
@@ -121,10 +121,10 @@
 
 | Modifiers      | Definition                                      | Containers |
 |----------------|-------------------------------------------------| -------------------------------------------|
-| `iterator emplace(const_iterator pos, Args&&... args)`          | inserts new elements into the container directly before pos  | List, Vector, Multiset |
-| `void emplace_back(Args&&... args)`          | appends a new element to the end of the container  | List, Vector, Queue |
-| `void emplace_front(Args&&... args)`          | appends a new element to the top of the container  | List, Stack |
-| `std::pair<iterator,bool> emplace(Args&&... args)`          | inserts new elements into the container  | Map, Set |
+| `iterator emplace(const_iterator pos, Args&&... args)`          | inserts new elements into the container directly before `pos`  | List, Vector |
+| `void emplace_back(Args&&... args)`          | appends new elements to the end of the container  | List, Vector, Queue |
+| `void emplace_front(Args&&... args)`          | appends new elements to the top of the container  | List, Stack |
+| `vector<std::pair<iterator,bool>> emplace(Args&&... args)`          | inserts new elements into the container  | Map, Set, Multiset |
 
 *Подсказка 1*: обратите внимание, что каждый из этих методов использует конструкцию Args&&... args - Parameter pack. Эта конструкция позволяет передавать переменное число параметров в функцию или метод. То есть при вызове метода, определенного как `iterator emplace(const_iterator pos, Args&&... args)`, можно написать как `emplace(pos, arg1, arg2)`, так и `emplace(pos, arg1, arg2, arg3)`.
 

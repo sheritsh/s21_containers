@@ -6,7 +6,7 @@
   <summary>Общая информация</summary>
 <br />
 
-Array (массив) - это последовательный контейнер, инкапсулирующий в себе статический массив. В контейнер array нельзя добавить новый элементы, можно только модифицировать значение заданных изначально. В плане взаимодействия, контейнер array сочетает в себе очевидные свойства статического массива с основным достоинством контейнерных классов - более четкой организацией данных. Например, контейнер Array хранит размер массива и предоставляет итераторы. Так же как и vector, array занимает последовательную часть памяти и может быть передан в функцию как стандартный массив в Си.
+Array (массив) - это последовательный контейнер, инкапсулирующий в себе статический массив. В контейнер array нельзя добавить новый элементы, можно только модифицировать значение заданных изначально. В плане взаимодействия, контейнер array сочетает в себе очевидные свойства статического массива с основным достоинством контейнерных классов - более четкой организацией данных. Например, контейнер Array хранит размер массива и предоставляет итераторы. Так же как и vector, array занимает последовательную часть памяти и может быть передан в функцию как стандартный массив в Си. Вторым шаблонным аргументом класса array является его фактический размер.
 
 </details>
 
@@ -34,7 +34,6 @@ Array (массив) - это последовательный контейне�
 | Functions      | Definition                                      |
 |----------------|-------------------------------------------------|
 | `array()`  | default constructor, creates empty array                                 |
-| `array(size_type n)`  | parameterized constructor, creates the array of size n                                 |
 | `array(std::initializer_list<value_type> const &items)`  | initializer list constructor, creates array initizialized using std::initializer_list<T>    |
 | `array(const array &a)`  | copy constructor  |
 | `array(array &&a)`  | move constructor  |
@@ -59,8 +58,8 @@ Array (массив) - это последовательный контейне�
 
 | Iterators      | Definition                                      |
 |----------------|-------------------------------------------------|
-| `iterator begincbegin()`    | returns an iterator to the beginning            |
-| `iterator endcend()`        | returns an iterator to the end                  |
+| `iterator begin()`    | returns an iterator to the beginning            |
+| `iterator end()`        | returns an iterator to the end                  |
 
 *Array Capacity*
 
@@ -108,8 +107,8 @@ Multiset (мультимножество) - это ассоциативный к
 | `value_type`             | `Key` value type (the value itself is a key)                                                    |
 | `reference`              | `value_type &` defines the type of the reference to an element                                                             |
 | `const_reference`        | `const value_type &` defines the type of the constant reference                                         |
-| `iterator`               | `value_type *` defines the type for iterating through the container                                                 |
-| `const_iterator`         | `const value_type *` defines the constant type for iterating through the container                                           |
+| `iterator`               | internal class `MultisetIterator<T>` or `BinaryTree::iterator` as internal iterator of tree subclass; defines the type for iterating through the container                                                 |
+| `const_iterator`         | internal class `MultisetConstIterator<T>` or `BinaryTree::const_iterator` as internal const iterator of tree subclass; defines the constant type for iterating through the container                                           |
 | `size_type`              | `size_t` defines the type of the container size (standard type is size_t) |
 
 *Multiset Member functions*
@@ -131,8 +130,8 @@ Multiset (мультимножество) - это ассоциативный к
 
 | Iterators              | Definition                                                                             |
 |------------------------|----------------------------------------------------------------------------------------|
-| `iterator begincbegin()`            | returns an iterator to the beginning                                                   |
-| `iterator endcend()`                | returns an iterator to the end                                                         |
+| `iterator begin()`            | returns an iterator to the beginning                                                   |
+| `iterator end()`                | returns an iterator to the end                                                         |
 
 
 *Multiset Capacity*
@@ -153,7 +152,6 @@ Multiset (мультимножество) - это ассоциативный к
 |------------------------|----------------------------------------------------------------------------------------|
 | `void clear()`                  | clears the contents                                                                    |
 | `iterator insert(const value_type& value)`                 | inserts node and returns iterator to where the element is in the container and bool denoting whether the insertion took place                                        |
-| `iterator insert(const Key& key, const T& obj)`                 | inserts value by key and returns iterator to where the element is in the container and bool denoting whether the insertion took place    |
 | `void erase(iterator pos)`                  | erases element at pos                                                                        |
 | `void swap(multiset& other)`                   | swaps the contents                                                                     |
 | `void merge(multiset& other)`                  | splices nodes from another container                                                   |
