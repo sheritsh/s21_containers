@@ -94,7 +94,7 @@ There are two main types of containers: sequence and associative containers. To 
 
 ## Chapter III
 
-- The program must be developed in C++ language of  C++20 standard
+- The program must be developed in C++ language of  C++17 standard
 - The program code must be located in the src folder
 - Make sure to use iterators
 - Classes must be template
