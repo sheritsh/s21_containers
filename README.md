@@ -22,6 +22,8 @@ The russian version of the task can be found in the repository.
 
 ## Chapter I
 
+![s21_containers](misc/images/s21_containers.png)
+
 Planet Earth, USA, California, somewhere among the massive containers of the Port of Oakland, 29 October 1993.
 
 *- Do you really think Bjarne will agree to add this to the standard?*
@@ -69,7 +71,7 @@ Each type of containers should provide the user with the following methods:
 
 - methods for dealing with the container iterator.
 
-Iterators provide an access to container elements. The specific type of iterator will be different for each container. This is because of the different kind of object set organisation in container classes, as well as the actual implementation of the container. Iterators are implemented to work in a similar way that a pointer to an array element in C does. So, this approach with iterators allows interaction with any containers in the same way. Containers provide iterators via the begin() and end() methods, which point to the first and next after the last elements of the container respectively.
+Iterators provide an access to container elements. The specific type of iterator will be different for each container. This is because of the different kind of object set organisation in container classes, as well as the actual implementation of the container. Iterators are implemented to work in a similar way that a pointer to an array element in C does. So, this approach with iterators allows interaction with any containers in the same way. Containers provide iterators via the `begin()` and `end()` methods, which point to the first and next after the last elements of the container respectively.
 
 Iterator `iter` has the following operations:
 
