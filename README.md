@@ -79,7 +79,6 @@ Iterator `iter` has the following operations:
 
 - `++iter`: moves the iterator forward to the next element
 
-
 - `--iter`: moves the iterator backwards to the previous element;
 
 - `iter1 == iter2`: two iterators are equal if they point to the same element
@@ -96,7 +95,7 @@ There are two main types of containers: sequence and associative containers. To 
 
 ## Chapter III
 
-- The program must be developed in C++ language of  C++17 standard
+- The program must be developed in C++ language of C++17 standard using gcc compiler
 - The program code must be located in the src folder
 - Make sure to use iterators
 - Classes must be template
@@ -111,6 +110,7 @@ You need to implement the `s21_containers.h` library classes (specifications are
 List of classes: `list`, `map`, `queue`, `set`, `stack`, `vector`.
 - Make it as a header file `s21_containers.h` which includes different header files with implementations of the specified containers (`s21_list.h`, `s21_map.h` and etc.) 
 - Provide a Makefile for testing the library (with targets clean, test)
+- The classical implementation of containers should be considered as a basis, but the final choice of implementations remains free. Except for the list - it should be implemented via the list structure rather than the array
 
 *Tip*: You can move the same implementation of container methods to base classes. For example, for a queue and a stack, or for a list and a vector. There is a UML diagram of the STL library in materials as *one possible example* of hierarchical construction. However, your implementation does not have to be strictly tied to this UML diagram.
 
@@ -120,8 +120,9 @@ You need to implement the `s21_containersplus.h` library functions (see **"Addit
 List of classes to be implemented additionally: `array`, `multiset`.
 - Make it as a header file `s21_containersplus.h` which includes different header files with implementations of the specified containers (`s21_array.h`, `s21_multiset.h`) 
 - Provide a Makefile for testing the library (with targets clean, test)
+- The classical implementation of containers should be considered as a basis, but the final choice of the algorithm remains free.
 
-### Part 3. Bonus. Implementation of the `emplace` methods
+### Part 3. Bonus. Implementation of the modified `emplace` methods
 
 You need to complete the classes with the appropriate methods, according to the table:
 
@@ -131,6 +132,8 @@ You need to complete the classes with the appropriate methods, according to the 
 | `void emplace_back(Args&&... args)`          | appends new elements to the end of the container  | List, Vector, Queue |
 | `void emplace_front(Args&&... args)`          | appends new elements to the top of the container  | List, Stack |
 | `vector<std::pair<iterator,bool>> emplace(Args&&... args)`          | inserts new elements into the container  | Map, Set, Multiset |
+
+Note: the arguments are the already created elements that should be inserted into the appropriate container.
 
 *Tip 1*: notice that each of these methods uses an Args&&... args - Parameter pack construct. This construct allows a variable number of parameters to be passed to a function or method. So, when calling a method defined as `iterator emplace(const_iterator pos, Args&&... args)`, you can write either `emplace(pos, arg1, arg2)` or `emplace(pos, arg1, arg2, arg3)`.
 
