@@ -151,7 +151,7 @@ Multiset (мультимножество) - это ассоциативный к
 | Modifiers              | Definition                                                                             |
 |------------------------|----------------------------------------------------------------------------------------|
 | `void clear()`                  | clears the contents                                                                    |
-| `iterator insert(const value_type& value)`                 | inserts node and returns iterator to where the element is in the container and bool denoting whether the insertion took place                                        |
+| `iterator insert(const value_type& value)`                 | inserts node and returns iterator to where the element is in the container                                        |
 | `void erase(iterator pos)`                  | erases element at pos                                                                        |
 | `void swap(multiset& other)`                   | swaps the contents                                                                     |
 | `void merge(multiset& other)`                  | splices nodes from another container                                                   |

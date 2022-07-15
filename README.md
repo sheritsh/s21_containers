@@ -17,7 +17,7 @@ The russian version of the task can be found in the repository.
 3. [Chapter III](#chapter-iii) \
    3.1. [Part 1](#part-1-implementation-of-the-s21_containersh-library)  
    3.2. [Part 2](#part-2-bonus-implementation-of-the-s21_containersplush-library)  
-   3.3. [Part 3](#part-3-bonus-implementation-of-the-emplace-methods)
+   3.3. [Part 3](#part-3-bonus-implementation-of-the-modified-emplace-methods)
 
 
 ## Chapter I
@@ -97,6 +97,7 @@ There are two main types of containers: sequence and associative containers. To 
 
 - The program must be developed in C++ language of C++17 standard using gcc compiler
 - The program code must be located in the src folder
+- When writing code it is necessary to follow the Google style
 - Make sure to use iterators
 - Classes must be template
 - Classes must be implemented within the `s21` namespace

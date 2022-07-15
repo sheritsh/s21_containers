@@ -20,6 +20,8 @@ check your program and its source code for the following points:
   ```brew install python3``` \
   or if you have root rights (for Ubuntu / Linux Mint / Debian) \
   ```sudo apt install python3```
+  
+  Google Style: https://google.github.io/styleguide/cppguide.html
 
 
 * **Test for correct operation with memory.** When writing C programs, it is very important to watch for memory leaks. To do this the _valgrind_ utility is quite often used in Unix-like operating systems. However OS X has some troubles with valgrind support, so it is possible to use _leaks_ utility instead. Go into we will not discuss the mechanism of their operation now - if you are interested, you can read about it on Google.
