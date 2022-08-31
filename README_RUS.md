@@ -129,7 +129,7 @@
 | `iterator emplace(const_iterator pos, Args&&... args)`          | inserts new elements into the container directly before `pos`  | List, Vector |
 | `void emplace_back(Args&&... args)`          | appends new elements to the end of the container  | List, Vector, Queue |
 | `void emplace_front(Args&&... args)`          | appends new elements to the top of the container  | List, Stack |
-| `std::pair<iterator,bool> emplace(Args&&... args)`          | inserts new elements into the container  | Map, Set, Multiset |
+| `vector<std::pair<iterator,bool>> emplace(Args&&... args)`          | inserts new elements into the container  | Map, Set, Multiset |
 
 Обратите внимание, что в качестве аргументов передаются уже созданные элементы, которые необходимо вставить в соответствующий контейнер.
 
