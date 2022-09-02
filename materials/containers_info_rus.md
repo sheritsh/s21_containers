@@ -487,7 +487,7 @@ Vector (вектор) - это последовательный контейне
 | `reference operator[](size_type pos);`             | access specified element                                                               |
 | `const_reference front()`          | access the first element                        |
 | `const_reference back()`           | access the last element                         |
-| `iterator data()`                   | direct access to the underlying array                                                  |
+| `T* data()`                   | direct access to the underlying array                                                  |
 
 *Vector Iterators*
 

@@ -490,7 +490,7 @@ This table contains the public methods for accessing the elements of the class:
 | `reference operator[](size_type pos);`             | access a specified element                                                               |
 | `const_reference front()`          | access the first element                        |
 | `const_reference back()`           | access the last element                         |
-| `iterator data()`                   | direct access the underlying array                                                  |
+| `T* data()`                   | direct access the underlying array                                                  |
 
 *Vector Iterators*
 
