@@ -1,8 +1,5 @@
 # s21_containers
 
-> При старте работы над проектом просим вас постараться хронометрировать время работы над проектом.
-> По завершении работы над проектом просим вас ответить на два вопроса [в этом опросе](https://forms.gle/1mNrKimJ1c7g8XLj6)
-
 Implementation of the s21_containers.h. library.
 
 The russian version of the task can be found in the repository.
@@ -140,3 +137,4 @@ Note: the arguments are the already created elements that should be inserted int
 
 *Tip 2*: remember to test methods for different cases, including boundary ones.
 
+💡 [Tap here](https://forms.yandex.ru/u/635a83fd90fa7b19bab20f1c/) **to leave your feedback on the project**. Pedago Team really tries to make your educational experience better.
