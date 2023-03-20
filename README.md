@@ -137,4 +137,4 @@ Note: the arguments are the already created elements that should be inserted int
 
 *Tip 2*: remember to test methods for different cases, including boundary ones.
 
-💡 [Tap here](https://forms.yandex.ru/u/635a83fd90fa7b19bab20f1c/) **to leave your feedback on the project**. Pedago Team really tries to make your educational experience better.
+💡 [Tap here](https://forms.yandex.ru/cloud/64181a7dc09c02252de7a4f3/) **to leave your feedback on the project**. Pedago Team really tries to make your educational experience better.

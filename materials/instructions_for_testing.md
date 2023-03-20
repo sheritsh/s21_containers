@@ -25,6 +25,8 @@ following points:
   with _valgrind_ support, so it is possible to use the _leaks_ utility instead. We will not go into the mechanism of
   operation of these utilities now — if you are interested, you can read about it on Google.
 
+  **_LEAKS_**
+
   To run your executable file using this utility, type in the terminal: \
   ```leaks -atExit -- ./main.out | grep LEAK:```
 
@@ -44,4 +46,15 @@ following points:
   _Additionally:_  \
   Use the ```-exclude``` option of _leaks_ to filter out leaks in functions with known memory leaks. This option helps
   reduce the amount of extra information reported by _leaks_.
+ 
+  **_VALGRIND_**
   
+  To install it on your computer, type one of the following commands: \
+   ```brew install valgrind``` \
+   or if you have root rights (for Ubuntu / Linux Mint / Debian) \
+   ```sudo apt install valgrind``` \
+   To run your executable file using this utility, type in the terminal: \
+   ```valgrind --tool=memcheck --leak-check=yes. /main. out```
+   
+   It is strongly recommended not to use _valgrind_ utility in OS X, use _leaks_ utility instead.
+ 
