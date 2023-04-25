@@ -128,7 +128,7 @@
 | `void emplace_front(Args&&... args)`          | appends new elements to the top of the container  | List, Stack |
 | `vector<std::pair<iterator,bool>> emplace(Args&&... args)`          | inserts new elements into the container  | Map, Set, Multiset |
 
-Обратите внимание, что в качестве аргументов передаются уже созданные элементы, которые необходимо вставить в соответствующий контейнер.
+Обратите внимание, что в качестве аргументов передаются уже созданные элементы соответствующего контейнера, которые необходимо вставить в этот контейнер.
 
 *Подсказка 1*: обратите внимание, что каждый из этих методов использует конструкцию Args&&... args - Parameter pack. Эта конструкция позволяет передавать переменное число параметров в функцию или метод. То есть при вызове метода, определенного как `iterator emplace(const_iterator pos, Args&&... args)`, можно написать как `emplace(pos, arg1, arg2)`, так и `emplace(pos, arg1, arg2, arg3)`.
 

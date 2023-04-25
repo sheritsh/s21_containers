@@ -91,7 +91,7 @@ List (список) - это последовательный контейнер
 | Modifiers      | Definition                                      |
 |----------------|-------------------------------------------------|
 | `void clear()`          | clears the contents                             |
-| `iterator insert(iterator pos, const_reference value)`         | inserts elements into concrete pos and returns the iterator that points to the new element     |
+| `iterator insert(iterator pos, const_reference value)`         | inserts element into concrete pos and returns the iterator that points to the new element     |
 | `void erase(iterator pos)`          | erases element at pos                                 |
 | `void push_back(const_reference value)`      | adds an element to the end                      |
 | `void pop_back()`   | removes the last element        |

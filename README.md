@@ -131,7 +131,7 @@ You need to complete the classes with the appropriate methods, according to the 
 | `void emplace_front(Args&&... args)`          | appends new elements to the top of the container  | List, Stack |
 | `vector<std::pair<iterator,bool>> emplace(Args&&... args)`          | inserts new elements into the container  | Map, Set, Multiset |
 
-Note: the arguments are the already created elements that should be inserted into the appropriate container.
+Note: the arguments are the already created elements of the appropriate container that should be inserted into this container.
 
 *Tip 1*: notice that each of these methods uses an Args&&... args - Parameter pack construct. This construct allows a variable number of parameters to be passed to a function or method. So, when calling a method defined as `iterator emplace(const_iterator pos, Args&&... args)`, you can write either `emplace(pos, arg1, arg2)` or `emplace(pos, arg1, arg2, arg3)`.
 
