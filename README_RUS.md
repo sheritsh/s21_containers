@@ -12,7 +12,7 @@
 3. [Chapter III](#chapter-iii) \
     3.1. [Part 1](#part-1-реализация-библиотеки-s21_containersh)  
     3.2. [Part 2](#part-2-дополнительно-реализация-библиотеки-s21_containersplush)  
-    3.3. [Part 3](#part-3-дополнительно-реализация-модифицированных-методов-emplace)
+    3.3. [Part 3](#part-3-дополнительно-реализация-методов-insert_many)
 
 
 ## Chapter I
@@ -117,20 +117,20 @@
 - Предусмотреть Makefile для тестов написанной библиотеки (с целями clean, test)
 - За основу стоит рассматривать классическую реализацию контейнеров, но конечный выбор алгоритма остается свободным
 
-### Part 3. Дополнительно. Реализация модифицированных методов `emplace`
+### Part 3. Дополнительно. Реализация методов `insert_many`
 
 Необходимо дополнить классы соответствующими методами, согласно таблице:
 
 | Modifiers      | Definition                                      | Containers |
 |----------------|-------------------------------------------------| -------------------------------------------|
-| `iterator emplace(const_iterator pos, Args&&... args)`          | inserts new elements into the container directly before `pos`  | List, Vector |
-| `void emplace_back(Args&&... args)`          | appends new elements to the end of the container  | List, Vector, Queue |
-| `void emplace_front(Args&&... args)`          | appends new elements to the top of the container  | List, Stack |
-| `vector<std::pair<iterator,bool>> emplace(Args&&... args)`          | inserts new elements into the container  | Map, Set, Multiset |
+| `iterator insert_many(const_iterator pos, Args&&... args)`          | inserts new elements into the container directly before `pos`  | List, Vector |
+| `void insert_many_back(Args&&... args)`          | appends new elements to the end of the container  | List, Vector, Queue |
+| `void insert_many_front(Args&&... args)`          | appends new elements to the top of the container  | List, Stack |
+| `vector<std::pair<iterator,bool>> insert_many(Args&&... args)`          | inserts new elements into the container  | Map, Set, Multiset |
 
 Обратите внимание, что в качестве аргументов передаются уже созданные элементы соответствующего контейнера, которые необходимо вставить в этот контейнер.
 
-*Подсказка 1*: обратите внимание, что каждый из этих методов использует конструкцию Args&&... args - Parameter pack. Эта конструкция позволяет передавать переменное число параметров в функцию или метод. То есть при вызове метода, определенного как `iterator emplace(const_iterator pos, Args&&... args)`, можно написать как `emplace(pos, arg1, arg2)`, так и `emplace(pos, arg1, arg2, arg3)`.
+*Подсказка 1*: обратите внимание, что каждый из этих методов использует конструкцию Args&&... args - Parameter pack. Эта конструкция позволяет передавать переменное число параметров в функцию или метод. То есть при вызове метода, определенного как `iterator insert_many(const_iterator pos, Args&&... args)`, можно написать как `insert_many(pos, arg1, arg2)`, так и `insert_many(pos, arg1, arg2, arg3)`.
 
 *Подсказка 2*: не забудьте протестировать методы для различных случаев, включая краевые.
 
