@@ -1,0 +1,236 @@
+namespace s21 {
+  
+template <class T>
+List<T>::List() : deque<T>() {}
+
+template <class T>
+List<T>::List(size_type n) : List() {
+  for (size_type i = 0; i < n; ++i) push_front(value_type());
+}
+
+template <class T>
+List<T>::List(std::initializer_list<value_type> const& items)
+    : deque<T>(items) {}
+
+template <class T>
+List<T>::List(const List& other) : deque<T>(other) {}
+
+template <class T>
+List<T>::List(List&& other) : deque<T>(std::move(other)) {}
+
+template <class T>
+List<T>& List<T>::operator=(const List& other) {
+  if (this != &other) {
+    deque<T>::operator=(other);
+  }
+  return *this;
+}
+
+template <class T>
+List<T>& List<T>::operator=(List&& other) noexcept {
+  if (this != &other) {
+    deque<T>::operator=(other);
+  }
+  return *this;
+}
+
+template <class T>
+typename List<T>::iterator List<T>::insert(iterator pos, const_reference value) {
+  if (pos == begin()) {
+    push_front(value);
+    pos = list_.head;
+  } else if (pos == end()) {
+    push_back(value);
+    pos = list_.tail;
+  } else {
+    Node* elem = pos.node_;
+    Node* convert = new Node(value);
+    convert.next = elem;
+    convert.prev = elem.prev;
+    elem.prev.next = convert;
+    elem.prev = convert;
+    this->size++;
+    return iterator(convert);
+  }
+  return pos;
+}
+
+}  // namespace s21
+
+
+
+
+
+
+
+
+#ifndef CONTAINERS_SRC_S21_LINKED_LIST_LIST_H_
+#define CONTAINERS_SRC_S21_LINKED_LIST_LIST_H_
+
+#include <iostream>
+#include <stdexcept>
+
+#include "deque.h"
+
+namespace s21 {
+template <class T>
+class List : public deque<T> {
+ public:
+  using value_type = T;
+  using reference = T &;
+  using const_reference = const T &;
+  using size_type = std::size_t;
+
+  using iterator = typename deque<T>::iterator;
+  using const_iterator = typename deque<T>::const_iterator;
+
+  iterator begin();
+  const_iterator cbegin() const;
+  iterator end();
+  const_iterator cend() const;
+
+  List();
+  List(size_type n);
+  List(std::initializer_list<value_type> const &items);
+  List(const List &other);
+  List(List &&other);
+  ~List() = default;
+
+  size_type max_size();
+
+  iterator insert(iterator pos, const_reference value);
+  void erase(iterator pos);
+  void splice(const_iterator pos, List &other);
+  void merge(List &other);
+  void reverse();
+  void unique();
+  void sort();
+
+  List &operator=(const List &other);
+  List &operator=(List &&other) noexcept;
+
+ private:
+};
+}  // namespace s21
+
+#include "list.tpp"
+
+#endif  // CONTAINERS_SRC_S21_LINKED_LIST_LIST_H_
+
+  // void push_back(const_reference value);
+  // void pop_back();
+  // void push_front(const_reference value);
+  // void pop_front();
+
+
+
+
+  namespace s21 {
+
+template <class T>
+typename List<T>::iterator List<T>::begin() {
+  return deque<T>::begin();
+}
+
+template <class T>
+typename List<T>::const_iterator List<T>::cbegin() const {
+  return deque<T>::cbegin();
+}
+
+template <class T>
+typename List<T>::iterator List<T>::end() {
+  return deque<T>::end();
+}
+
+template <class T>
+typename List<T>::const_iterator List<T>::cend() const {
+  return deque<T>::cend();
+}
+
+template <class T>
+List<T>::List() : deque<T>() {}
+
+template <class T>
+List<T>::List(size_type n) : List() {
+  for (size_type i = 0; i < n; ++i) push_front(value_type());
+}
+
+template <class T>
+List<T>::List(std::initializer_list<value_type> const& items)
+    : deque<T>(items) {}
+
+template <class T>
+List<T>::List(const List& other) : deque<T>(other) {}
+
+template <class T>
+List<T>::List(List&& other) : deque<T>(std::move(other)) {}
+
+template <class T>
+List<T>& List<T>::operator=(const List& other) {
+  std::cout << "copy\n";
+  if (this != &other) {
+    deque<T>::operator=(other);
+  }
+  return *this;
+}
+
+template <class T>
+List<T>& List<T>::operator=(List&& other) noexcept {
+  std::cout << "move\n";
+  if (this != &other) {
+    deque<T>::operator=(other);
+  }
+  return *this;
+}
+
+// template <class T>
+// typename List<T>::const_reference List<T>::front() const {
+//   return front();
+// }
+
+// template <class T>
+// typename List<T>::const_reference List<T>::back() const {
+//   return back();
+// }
+
+// template <class T>
+// bool List<T>::empty() const {
+//   return empty();
+// }
+
+// template <class T>
+// typename List<T>::size_type List<T>::size() const {
+//   return size();
+// }
+
+// template <class T>
+// void List<T>::clear() {
+//   clear();
+// }
+
+template <class T>
+typename List<T>::iterator List<T>::insert(iterator pos,
+                                           const_reference value) {
+  if (pos == begin()) {
+    push_front(value);
+    pos = List<T>::list_.head;
+  } else if (pos == end()) {
+    push_back(value);
+    pos = List<T>::list_.tail;
+  } else {
+    Node* elem = pos.node_;
+    Node* convert = new Node(value);
+    convert->next = elem;
+    convert->prev = elem->prev;
+    elem->prev->next = convert;
+    elem->prev = convert;
+    this->list_.size++;
+    return iterator(convert);
+  }
+  return pos;
+}
+
+}  // namespace s21
+
+
+
