@@ -2,26 +2,26 @@ namespace s21 {
 
 template <class T>
 typename List<T>::iterator List<T>::begin() {
-  return List<T>::begin();
+  return deque<T>::begin();
 }
 
 template <class T>
 typename List<T>::const_iterator List<T>::cbegin() const {
-  return List<T>::cbegin();
+  return deque<T>::cbegin();
 }
 
 template <class T>
 typename List<T>::iterator List<T>::end() {
-  return List<T>::end();
+  return deque<T>::end();
 }
 
 template <class T>
 typename List<T>::const_iterator List<T>::cend() const {
-  return List<T>::cend();
+  return deque<T>::cend();
 }
 
 template <class T>
-List<T>::List() : List<T>() {}
+List<T>::List() : deque<T>() {}
 
 template <class T>
 List<T>::List(size_type n) : List() {
@@ -30,26 +30,28 @@ List<T>::List(size_type n) : List() {
 
 template <class T>
 List<T>::List(std::initializer_list<value_type> const& items)
-    : List<T>(items) {}
+    : deque<T>(items) {}
 
 template <class T>
-List<T>::List(const List& other) : List<T>(other) {}
+List<T>::List(const List& other) : deque<T>(other) {}
 
 template <class T>
-List<T>::List(List&& other) : List<T>(std::move(other)) {}
+List<T>::List(List&& other) : deque<T>(std::move(other)) {}
 
 template <class T>
 List<T>& List<T>::operator=(const List& other) {
+  std::cout << "-List Copy-\n";
   if (this != &other) {
-    List<T>::operator=(other);
+    deque<T>::operator=(other);
   }
   return *this;
 }
 
 template <class T>
 List<T>& List<T>::operator=(List&& other) noexcept {
+  std::cout << "-List Move-\n";
   if (this != &other) {
-    List<T>::operator=(other);
+    deque<T>::operator=(std::move(other));
   }
   return *this;
 }
@@ -100,25 +102,45 @@ void List<T>::pop_back() {
 }
 
 template <class T>
+typename List<T>::size_type List<T>::max_size() {
+  return std::numeric_limits<size_type>::max() / sizeof(typename deque<T>::Node) / 2;
+}
+
+template <class T>
 typename List<T>::iterator List<T>::insert(iterator pos,
                                            const_reference value) {
   if (pos == begin()) {
     push_front(value);
-    pos = List<T>::list_.head;
+    pos = deque<T>::list_.head;
   } else if (pos == end()) {
     push_back(value);
-    pos = List<T>::list_.tail;
+    pos = deque<T>::list_.tail;
   } else {
-    typename List<T>::Node* elem = pos.node_;
-    typename List<T>::Node* convert = new typename List<T>::Node(value);
-    convert->next = elem;
-    convert->prev = elem->prev;
-    elem->prev->next = convert;
-    elem->prev = convert;
+    typename deque<T>::Node* current = pos.node_;
+    typename deque<T>::Node* blank = new typename deque<T>::Node(value);
+    blank->next = current;
+    blank->prev = current->prev;
+    current->prev->next = blank;
+    current->prev = blank;
     this->list_.size++;
-    return iterator(convert);
+    return iterator(blank);
   }
   return pos;
+}
+
+template <class T>
+void List<T>::erase(iterator pos) {
+  if (pos == begin()) {
+    pop_front();
+  } else if (pos.node_ == this->list_.tail) {
+    pop_back();
+  } else {
+    typename List<T>::Node* node = pos.node_;
+    node->prev->next = node->next;
+    node->next->prev = node->prev;
+    delete node;
+    this->list_.size--;
+  }
 }
 
 }  // namespace s21
