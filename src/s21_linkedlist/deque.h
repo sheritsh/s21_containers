@@ -113,11 +113,6 @@ class deque {
    public:
     DequeConstIterator() : DequeIterator() {}
     DequeConstIterator(const DequeIterator &node_) : DequeIterator(node_) {}
-
-    // DequeConstIterator operator=(const DequeConstIterator &node_) {
-    //   DequeIterator::operator=(node_);
-    //   return *this;
-    // }
     const_reference operator*() const { return DequeIterator::operator*(); }
   };
 

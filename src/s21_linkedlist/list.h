@@ -50,6 +50,10 @@ class List : public deque<T> {
   List &operator=(List &&other) noexcept;
 
  private:
+  typename deque<T>::Node *MergeSort(typename deque<T>::Node *head);
+  typename deque<T>::Node *GetMiddle(typename deque<T>::Node *head);
+  typename deque<T>::Node *merge(typename deque<T>::Node *left,
+                                 typename deque<T>::Node *right);
 };
 }  // namespace s21
 

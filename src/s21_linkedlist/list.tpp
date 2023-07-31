@@ -56,31 +56,6 @@ List<T>& List<T>::operator=(List&& other) noexcept {
   return *this;
 }
 
-// template <class T>
-// typename List<T>::const_reference List<T>::front() const {
-//   return front();
-// }
-
-// template <class T>
-// typename List<T>::const_reference List<T>::back() const {
-//   return back();
-// }
-
-// template <class T>
-// bool List<T>::empty() const {
-//   return empty();
-// }
-
-// template <class T>
-// typename List<T>::size_type List<T>::size() const {
-//   return size();
-// }
-
-// template <class T>
-// void List<T>::clear() {
-//   clear();
-// }
-
 template <class T>
 void List<T>::push_front(const_reference value) {
   deque<T>::push_front(value);
@@ -102,8 +77,112 @@ void List<T>::pop_back() {
 }
 
 template <class T>
+void List<T>::sort() {
+  this->list_.head = mergeSort(this->list_.head);
+  this->list_.tail = this->list_.head;
+  while (this->list_.tail->next != nullptr) {
+    this->list_.tail = this->list_.tail->next;
+  }
+}
+
+template <class T>
+typename deque<T>::Node* List<T>::MergeSort(typename deque<T>::Node* head) {
+  if (head == nullptr || head->next == nullptr) {
+    return head;
+  }
+  typename deque<T>::Node* middle = getMiddle(head);
+  typename deque<T>::Node* nextOfMiddle = middle->next;
+  middle->next = nullptr;
+  typename deque<T>::Node* left = mergeSort(head);
+  typename deque<T>::Node* right = mergeSort(nextOfMiddle);
+  return merge(left, right);
+}
+
+template <class T>
+typename deque<T>::Node* List<T>::GetMiddle(typename deque<T>::Node* head) {
+  typename deque<T>::Node* slow = head;
+  typename deque<T>::Node* fast = head;
+  while (fast->next != nullptr && fast->next->next != nullptr) {
+    slow = slow->next;
+    fast = fast->next->next;
+  }
+  return slow;
+}
+
+template <class T>
+typename deque<T>::Node* List<T>::merge(typename deque<T>::Node* left,
+                                        typename deque<T>::Node* right) {
+  typename deque<T>::Node* result = nullptr;
+  if (left == nullptr) {
+    return right;
+  } else if (right == nullptr) {
+    return left;
+  }
+  if (left->value <= right->value) {
+    result = left;
+    result->next = merge(left->next, right);
+  } else {
+    result = right;
+    result->next = merge(left, right->next);
+  }
+  return result;
+}
+
+template <class T>
+void List<T>::merge(List& other) {
+  if (this != &other) {
+    iterator it_this = begin();
+    iterator it_other = other.begin();
+    while (!other.empty()) {
+      if (it_this == end() || *it_this > *it_other) {
+        insert(it_this, *it_other);
+        other.erase(it_other);
+        ++it_other;
+      } else {
+        ++it_this;
+      }
+    }
+  }
+}
+
+template <class T>
+void List<T>::splice(const_iterator pos, List& other) {
+  for (iterator it = other.begin(); it != other.end(); ++it) {
+    insert(pos, *it);
+  }
+}
+
+template <class T>
+void List<T>::reverse() {
+  if (this->list_.size > 1) {
+    typename deque<T>::Node* node = this->list_.head;
+    for (size_type i = 0; i < this->list_.size; ++i) {
+      std::swap(node->prev, node->next);
+      node = node->prev;
+    }
+    std::swap(this->list_.head, this->list_.tail);
+  }
+}
+
+template <class T>
+void List<T>::unique() {
+  for (iterator it_last = begin(); it_last != end();) {
+    iterator it_next = it_last;
+    ++it_next;
+    if (it_next.node_ == nullptr) {
+      return;
+    } else if (*it_last == *it_next) {
+      erase(it_next);
+    } else {
+      ++it_last;
+    }
+  }
+}
+
+template <class T>
 typename List<T>::size_type List<T>::max_size() {
-  return std::numeric_limits<size_type>::max() / sizeof(typename deque<T>::Node) / 2;
+  return std::numeric_limits<size_type>::max() /
+         sizeof(typename deque<T>::Node) / 2;
 }
 
 template <class T>
@@ -111,10 +190,10 @@ typename List<T>::iterator List<T>::insert(iterator pos,
                                            const_reference value) {
   if (pos == begin()) {
     push_front(value);
-    pos = deque<T>::list_.head;
+    pos = this->list_.head;
   } else if (pos == end()) {
     push_back(value);
-    pos = deque<T>::list_.tail;
+    pos = this->list_.tail;
   } else {
     typename deque<T>::Node* current = pos.node_;
     typename deque<T>::Node* blank = new typename deque<T>::Node(value);
