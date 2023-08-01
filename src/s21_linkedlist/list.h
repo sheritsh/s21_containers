@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include <limits>
-#include <stdexcept>
 
 #include "deque.h"
 
@@ -16,13 +15,47 @@ class list : public deque<T> {
   using const_reference = const T &;
   using size_type = std::size_t;
 
-  using iterator = typename deque<T>::iterator;
-  using const_iterator = typename deque<T>::const_iterator;
+  class ListIterator {
+    friend class list<T>;
 
-  iterator begin();
+   public:
+    ListIterator();
+    ListIterator(typename deque<T>::Node *node);
+    ListIterator(typename deque<T>::Node *node,
+                 typename deque<T>::Node *last_node);
+
+    reference operator*() const;
+    value_type *operator->() const;
+    ListIterator &operator++();
+    ListIterator operator++(int);
+    ListIterator &operator--();
+    ListIterator operator--(int);
+    bool operator==(const ListIterator &other) const;
+    bool operator!=(const ListIterator &other) const;
+    bool operator<(const ListIterator &other) const;
+    bool operator<=(const ListIterator &other) const;
+    bool operator>(const ListIterator &other) const;
+    bool operator>=(const ListIterator &other) const;
+
+   protected:
+    typename deque<T>::Node *node_;
+    typename deque<T>::Node *last_node_;
+  };
+
+  class ListConstIterator : public ListIterator {
+   public:
+    ListConstIterator();
+    ListConstIterator(const ListIterator &node_);
+    const_reference operator*() const;
+  };
+
+  using iterator = ListIterator;
+  using const_iterator = ListConstIterator;
+
   const_iterator cbegin() const;
-  iterator end();
   const_iterator cend() const;
+  iterator begin();
+  iterator end();
 
   list();
   list(size_type n);

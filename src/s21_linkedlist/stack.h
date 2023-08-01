@@ -2,7 +2,6 @@
 #define CONTAINERS_SRC_S21_LINKED_LIST_STACK_H_
 
 #include <iostream>
-#include <stdexcept>
 
 #include "deque.h"
 

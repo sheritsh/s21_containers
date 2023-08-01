@@ -1,24 +1,128 @@
 namespace s21 {
 
+// Iterator
+
 template <class T>
-typename list<T>::iterator list<T>::begin() {
-  return deque<T>::begin();
+list<T>::ListIterator::ListIterator(){};
+
+template <class T>
+list<T>::ListIterator::ListIterator(typename deque<T>::Node* node_)
+    : node_(node_) {}
+
+template <class T>
+list<T>::ListIterator::ListIterator(typename deque<T>::Node* node,
+                                    typename deque<T>::Node* last_node)
+    : node_(node), last_node_(last_node) {}
+
+template <class T>
+typename list<T>::reference list<T>::ListIterator::operator*() const {
+  return node_->value;
 }
 
 template <class T>
-typename list<T>::const_iterator list<T>::cbegin() const {
-  return deque<T>::cbegin();
+typename list<T>::value_type* list<T>::ListIterator::operator->() const {
+  return &node_->value;
+}
+
+template <class T>
+typename list<T>::ListIterator& list<T>::ListIterator::operator++() {
+  last_node_ = node_;
+  node_ = node_->next;
+  return *this;
+}
+
+template <class T>
+typename list<T>::ListIterator list<T>::ListIterator::operator++(int) {
+  ListIterator it = *this;
+  node_ = node_->next;
+  return it;
+}
+
+template <class T>
+typename list<T>::ListIterator& list<T>::ListIterator::operator--() {
+  if (node_ == nullptr) {
+    node_ = last_node_;
+  } else {
+    node_ = node_->prev;
+  }
+  return *this;
+}
+
+template <class T>
+typename list<T>::ListIterator list<T>::ListIterator::operator--(int) {
+  ListIterator it = *this;
+  node_ = node_->prev;
+  return it;
+}
+
+template <class T>
+bool list<T>::ListIterator::operator==(const ListIterator& other) const {
+  return node_ == other.node_;
+}
+
+template <class T>
+bool list<T>::ListIterator::operator!=(const ListIterator& other) const {
+  return node_ != other.node_;
+}
+
+template <class T>
+bool list<T>::ListIterator::operator<(const ListIterator& other) const {
+  return node_ < other.node_;
+}
+
+template <class T>
+bool list<T>::ListIterator::operator<=(const ListIterator& other) const {
+  return node_ <= other.node_;
+}
+
+template <class T>
+bool list<T>::ListIterator::operator>(const ListIterator& other) const {
+  return node_ > other.node_;
+}
+
+template <class T>
+bool list<T>::ListIterator::operator>=(const ListIterator& other) const {
+  return node_ >= other.node_;
+}
+
+// Const Iterator
+
+template <class T>
+list<T>::ListConstIterator::ListConstIterator() : ListIterator() {}
+
+template <class T>
+list<T>::ListConstIterator::ListConstIterator(const ListIterator& node_)
+    : ListIterator(node_) {}
+
+template <class T>
+typename list<T>::const_reference list<T>::ListConstIterator::operator*()
+    const {
+  return ListIterator::operator*();
+}
+
+// Iterator methods
+
+template <class T>
+typename list<T>::iterator list<T>::begin() {
+  return iterator(this->list_.head);
 }
 
 template <class T>
 typename list<T>::iterator list<T>::end() {
-  return deque<T>::end();
+  return iterator(this->list_.tail->next, this->list_.tail);
+}
+
+template <class T>
+typename list<T>::const_iterator list<T>::cbegin() const {
+  return const_iterator(this->list_.head);
 }
 
 template <class T>
 typename list<T>::const_iterator list<T>::cend() const {
-  return deque<T>::cend();
+  return const_iterator(this->list_.tail->next, this->list_.tail);
 }
+
+// List
 
 template <class T>
 list<T>::list() : deque<T>() {}
