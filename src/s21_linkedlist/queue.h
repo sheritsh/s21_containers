@@ -8,18 +8,18 @@
 
 namespace s21 {
 template <class T, class Container = deque<T>>
-class Queue {
+class queue {
  public:
   using value_type = T;
   using reference = T &;
   using const_reference = const T &;
   using size_type = std::size_t;
 
-  Queue();
-  Queue(std::initializer_list<value_type> const &items);
-  Queue(const Queue &other);
-  Queue(Queue &&other);
-  ~Queue();
+  queue();
+  queue(std::initializer_list<value_type> const &items);
+  queue(const queue &other);
+  queue(queue &&other);
+  ~queue();
 
   const_reference front() const;
   const_reference back() const;
@@ -28,10 +28,10 @@ class Queue {
   void push(const_reference value);
   void pop();
 
-  void swap(Queue &other);
+  void swap(queue &other);
 
-  Queue &operator=(const Queue &other);
-  Queue &operator=(Queue &&other) noexcept;
+  queue &operator=(const queue &other);
+  queue &operator=(queue &&other) noexcept;
 
  private:
   Container deque;

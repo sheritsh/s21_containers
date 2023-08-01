@@ -9,7 +9,7 @@
 
 namespace s21 {
 template <class T>
-class List : public deque<T> {
+class list : public deque<T> {
  public:
   using value_type = T;
   using reference = T &;
@@ -24,12 +24,12 @@ class List : public deque<T> {
   iterator end();
   const_iterator cend() const;
 
-  List();
-  List(size_type n);
-  List(std::initializer_list<value_type> const &items);
-  List(const List &other);
-  List(List &&other);
-  ~List() = default;
+  list();
+  list(size_type n);
+  list(std::initializer_list<value_type> const &items);
+  list(const list &other);
+  list(list &&other);
+  ~list() = default;
 
   size_type max_size();
 
@@ -40,14 +40,14 @@ class List : public deque<T> {
 
   iterator insert(iterator pos, const_reference value);
   void erase(iterator pos);
-  void splice(const_iterator pos, List &other);
-  void merge(List &other);
+  void splice(const_iterator pos, list &other);
+  void merge(list &other);
   void reverse();
   void unique();
   void sort();
 
-  List &operator=(const List &other);
-  List &operator=(List &&other) noexcept;
+  list &operator=(const list &other);
+  list &operator=(list &&other) noexcept;
 
  private:
   typename deque<T>::Node *MergeSort(typename deque<T>::Node *head);

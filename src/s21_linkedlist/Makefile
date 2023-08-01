@@ -3,4 +3,7 @@ all: clean
 
 clean:
 	@echo "Deleting unnecessary files..."
-	@rm -rf *.o *.a a.out
+	@rm -rf *.o *.a a.out test
+
+test: clean
+	gcc -Wall -Werror -Wextra -lstdc++ -std=c++17 -lgtest tests.cc -o test

@@ -40,7 +40,6 @@ void deque<T>::swap(deque &other) {
 
 template <class T>
 deque<T> &deque<T>::operator=(const deque &other) {
-  std::cout << "-Deque Copy-\n";
   if (this != &other) {
     while (!empty()) {
       pop_front();
@@ -56,7 +55,6 @@ deque<T> &deque<T>::operator=(const deque &other) {
 
 template <class T>
 deque<T> &deque<T>::operator=(deque &&other) noexcept {
-  std::cout << "-Deque Move-\n";
   if (this != &other) {
     while (!empty()) {
       pop_front();

@@ -2,12 +2,11 @@
 #define CONTAINERS_SRC_LINKEDLIST_H_
 
 #include <iostream>
-#include <stdexcept>
 
 namespace s21 {
 
 template <class T>
-class List;
+class list;
 
 template <class T>
 class deque {
@@ -46,7 +45,7 @@ class deque {
     value_type value;
     Node *next = nullptr;
     Node *prev = nullptr;
-    Node(value_type val, Node *next_node = nullptr, Node *prev_node = nullptr)
+    Node(value_type val = value_type(), Node *next_node = nullptr, Node *prev_node = nullptr)
         : value(val), next(next_node), prev(prev_node) {}
   };
 
@@ -61,7 +60,7 @@ class deque {
  public:
   class DequeIterator {
     friend deque;
-    friend class List<T>;
+    friend class list<T>;
 
    public:
     DequeIterator() = default;

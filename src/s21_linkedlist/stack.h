@@ -8,18 +8,18 @@
 
 namespace s21 {
 template <class T, class Container = deque<T>>
-class Stack {
+class stack {
  public:
   using value_type = T;
   using reference = T &;
   using const_reference = const T &;
   using size_type = std::size_t;
 
-  Stack();
-  Stack(std::initializer_list<value_type> const &items);
-  Stack(const Stack &other);
-  Stack(Stack &&other);
-  ~Stack();
+  stack();
+  stack(std::initializer_list<value_type> const &items);
+  stack(const stack &other);
+  stack(stack &&other);
+  ~stack();
 
   const_reference top() const;
   bool empty() const;
@@ -27,10 +27,10 @@ class Stack {
   void push(const_reference value);
   void pop();
 
-  void swap(Stack &other);
+  void swap(stack &other);
 
-  Stack &operator=(const Stack &other);
-  Stack &operator=(Stack &&other) noexcept;
+  stack &operator=(const stack &other);
+  stack &operator=(stack &&other) noexcept;
 
  private:
   Container deque;
