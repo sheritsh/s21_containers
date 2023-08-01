@@ -9,31 +9,14 @@
 #include "stack.h"
 int main() {
   {
-    s21::list<double> test = {1, 2, 3};
-    s21::list<double>::iterator it;
-    it = test.end();
-    test.insert(it, 4);
-    --it;
-    std::cout << *it;
-    it = test.begin();
-    for (int i = 0; i < 4; ++i) {
-      std::cout << *it;
-      ++it;
-    }
+  s21::list<int> my_list1;
+  my_list1.insert(my_list1.end(), 5);
+
   }
   std::cout << "\n\n";
   {
-    std::list<double> test = {1, 2, 3};
-    std::list<double>::iterator it;
-    it = test.end();
-    test.insert(it, 4);
-    --it;
-    std::cout << *it;
-    it = test.begin();
-    for (int i = 0; i < 4; ++i) {
-      std::cout << *it;
-      ++it;
-    }
+  std::list<int> std_list1;
+  std_list1.insert(std_list1.end(), 5);
   }
   return 0;
 }

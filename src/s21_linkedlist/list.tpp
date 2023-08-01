@@ -109,7 +109,7 @@ typename list<T>::iterator list<T>::begin() {
 
 template <class T>
 typename list<T>::iterator list<T>::end() {
-  return iterator(this->list_.tail->next, this->list_.tail);
+  return this->list_.head ? iterator(this->list_.tail->next, this->list_.tail) : begin();
 }
 
 template <class T>
@@ -237,12 +237,18 @@ void list<T>::merge(list& other) {
     iterator it_this = begin();
     iterator it_other = other.begin();
     while (!other.empty()) {
-      if (it_this == end() || *it_this > *it_other) {
+      if (this->empty()) {
         insert(it_this, *it_other);
         other.erase(it_other);
         ++it_other;
       } else {
-        ++it_this;
+        if (it_this == end() || *it_other < *it_this) {
+          insert(it_this, *it_other);
+          other.erase(it_other);
+          ++it_other;
+        } else {
+          ++it_this;
+        }
       }
     }
   }
@@ -250,8 +256,10 @@ void list<T>::merge(list& other) {
 
 template <class T>
 void list<T>::splice(const_iterator pos, list& other) {
-  for (iterator it = other.begin(); it != other.end(); ++it) {
-    insert(pos, *it);
+  if (!other.empty()) {
+    for (iterator it = other.begin(); it != other.end(); ++it) {
+      insert(pos, *it);
+    }
   }
 }
 
@@ -269,15 +277,17 @@ void list<T>::reverse() {
 
 template <class T>
 void list<T>::unique() {
-  for (iterator it_last = begin(); it_last != end();) {
-    iterator it_next = it_last;
-    ++it_next;
-    if (it_next.node_ == nullptr) {
-      return;
-    } else if (*it_last == *it_next) {
-      erase(it_next);
-    } else {
-      ++it_last;
+  if (!this->empty()) {
+    for (iterator it_last = begin(); it_last != end();) {
+      iterator it_next = it_last;
+      ++it_next;
+      if (it_next.node_ == nullptr) {
+        return;
+      } else if (*it_last == *it_next) {
+        erase(it_next);
+      } else {
+        ++it_last;
+      }
     }
   }
 }
@@ -294,7 +304,7 @@ typename list<T>::iterator list<T>::insert(iterator pos,
   if (pos == begin()) {
     push_front(value);
     pos = this->list_.head;
-  } else if (pos == end()) {
+  } else if (pos == this->end()) {
     push_back(value);
     pos = this->list_.tail;
   } else {
