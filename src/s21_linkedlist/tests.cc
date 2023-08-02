@@ -36,6 +36,20 @@ TEST(Stack, Constructor_Copy) {
   EXPECT_EQ(our_copy.top(), std_copy.top());
 }
 
+TEST(Stack, Operator_Copy) {
+  s21::stack<int> our_stack_int = {1, 2, 3};
+  std::stack<int> std_stack_int;
+  std_stack_int.push(1);
+  std_stack_int.push(2);
+  std_stack_int.push(3);
+  s21::stack<int> our_stack_empty;
+  std::stack<int> std_stack_empty;
+  our_stack_empty = our_stack_int;
+  std_stack_empty = std_stack_int;
+  EXPECT_EQ(our_stack_empty.top(), std_stack_empty.top());
+  EXPECT_EQ(our_stack_int.empty(), std_stack_int.empty());
+}
+
 TEST(Stack, Constructor_Move) {
   s21::stack<int> our_stack = {1, 2, 3};
   s21::stack<int> our_move(std::move(our_stack));
@@ -46,6 +60,20 @@ TEST(Stack, Constructor_Move) {
   std::stack<int> std_move(std::move(std_stack));
   EXPECT_EQ(our_move.top(), std_move.top());
   EXPECT_EQ(our_stack.empty(), std_stack.empty());
+}
+
+TEST(Stack, Operator_Move) {
+  s21::stack<int> our_stack_int = {1, 2, 3};
+  std::stack<int> std_stack_int;
+  std_stack_int.push(1);
+  std_stack_int.push(2);
+  std_stack_int.push(3);
+  s21::stack<int> our_stack_empty;
+  std::stack<int> std_stack_empty;
+  our_stack_empty = std::move(our_stack_int);
+  std_stack_empty = std::move(std_stack_int);
+  EXPECT_EQ(our_stack_empty.top(), std_stack_empty.top());
+  EXPECT_EQ(our_stack_int.empty(), std_stack_int.empty());
 }
 
 TEST(Stack, Top) {
@@ -138,34 +166,6 @@ TEST(Stack, Swap) {
   EXPECT_EQ(our_stack_int.empty(), std_stack_int.empty());
 }
 
-TEST(Stack, OperatorEqualCopy) {
-  s21::stack<int> our_stack_int = {1, 2, 3};
-  std::stack<int> std_stack_int;
-  std_stack_int.push(1);
-  std_stack_int.push(2);
-  std_stack_int.push(3);
-  s21::stack<int> our_stack_empty;
-  std::stack<int> std_stack_empty;
-  our_stack_empty = our_stack_int;
-  std_stack_empty = std_stack_int;
-  EXPECT_EQ(our_stack_empty.top(), std_stack_empty.top());
-  EXPECT_EQ(our_stack_int.empty(), std_stack_int.empty());
-}
-
-TEST(Stack, OperatorEqualMove) {
-  s21::stack<int> our_stack_int = {1, 2, 3};
-  std::stack<int> std_stack_int;
-  std_stack_int.push(1);
-  std_stack_int.push(2);
-  std_stack_int.push(3);
-  s21::stack<int> our_stack_empty;
-  std::stack<int> std_stack_empty;
-  our_stack_empty = std::move(our_stack_int);
-  std_stack_empty = std::move(std_stack_int);
-  EXPECT_EQ(our_stack_empty.top(), std_stack_empty.top());
-  EXPECT_EQ(our_stack_int.empty(), std_stack_int.empty());
-}
-
 TEST(Stack, InsertManyFront) {
   s21::stack<int> our_stack_int;
   our_stack_int.insert_many_front(1, 2, 3);
@@ -202,6 +202,21 @@ TEST(Queue, Constructor_Copy) {
   EXPECT_EQ(our_copy.back(), std_copy.back());
 }
 
+TEST(Queue, Operator_Copy) {
+  s21::queue<int> our_queue_int = {1, 2, 3};
+  std::queue<int> std_queue_int;
+  std_queue_int.push(1);
+  std_queue_int.push(2);
+  std_queue_int.push(3);
+  s21::queue<int> our_queue_empty;
+  std::queue<int> std_queue_empty;
+  our_queue_empty = our_queue_int;
+  std_queue_empty = std_queue_int;
+  EXPECT_EQ(our_queue_empty.front(), std_queue_empty.front());
+  EXPECT_EQ(our_queue_empty.back(), std_queue_empty.back());
+  EXPECT_EQ(our_queue_int.empty(), std_queue_int.empty());
+}
+
 TEST(Queue, Constructor_Move) {
   s21::queue<int> our_queue = {1, 2, 3};
   s21::queue<int> our_move(std::move(our_queue));
@@ -213,6 +228,21 @@ TEST(Queue, Constructor_Move) {
   EXPECT_EQ(our_move.front(), std_move.front());
   EXPECT_EQ(our_move.back(), std_move.back());
   EXPECT_EQ(our_queue.empty(), std_queue.empty());
+}
+
+TEST(Queue, Operator_Move) {
+  s21::queue<int> our_queue_int = {1, 2, 3};
+  std::queue<int> std_queue_int;
+  std_queue_int.push(1);
+  std_queue_int.push(2);
+  std_queue_int.push(3);
+  s21::queue<int> our_queue_empty;
+  std::queue<int> std_queue_empty;
+  our_queue_empty = std::move(our_queue_int);
+  std_queue_empty = std::move(std_queue_int);
+  EXPECT_EQ(our_queue_empty.front(), std_queue_empty.front());
+  EXPECT_EQ(our_queue_empty.back(), std_queue_empty.back());
+  EXPECT_EQ(our_queue_int.empty(), std_queue_int.empty());
 }
 
 TEST(Queue, FrontAndBack) {
@@ -311,37 +341,7 @@ TEST(Queue, Swap) {
   EXPECT_EQ(our_queue_int.empty(), std_queue_int.empty());
 }
 
-TEST(Queue, OperatorEqualCopy) {
-  s21::queue<int> our_queue_int = {1, 2, 3};
-  std::queue<int> std_queue_int;
-  std_queue_int.push(1);
-  std_queue_int.push(2);
-  std_queue_int.push(3);
-  s21::queue<int> our_queue_empty;
-  std::queue<int> std_queue_empty;
-  our_queue_empty = our_queue_int;
-  std_queue_empty = std_queue_int;
-  EXPECT_EQ(our_queue_empty.front(), std_queue_empty.front());
-  EXPECT_EQ(our_queue_empty.back(), std_queue_empty.back());
-  EXPECT_EQ(our_queue_int.empty(), std_queue_int.empty());
-}
-
-TEST(Queue, OperatorEqualMove) {
-  s21::queue<int> our_queue_int = {1, 2, 3};
-  std::queue<int> std_queue_int;
-  std_queue_int.push(1);
-  std_queue_int.push(2);
-  std_queue_int.push(3);
-  s21::queue<int> our_queue_empty;
-  std::queue<int> std_queue_empty;
-  our_queue_empty = std::move(our_queue_int);
-  std_queue_empty = std::move(std_queue_int);
-  EXPECT_EQ(our_queue_empty.front(), std_queue_empty.front());
-  EXPECT_EQ(our_queue_empty.back(), std_queue_empty.back());
-  EXPECT_EQ(our_queue_int.empty(), std_queue_int.empty());
-}
-
-TEST(Queue, InsertManyFront) {
+TEST(Queue, InsertManyBack) {
   s21::queue<int> our_queue_int;
   our_queue_int.insert_many_back(1, 2, 3);
   EXPECT_EQ(our_queue_int.front(), 1);
