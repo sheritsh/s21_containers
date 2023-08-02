@@ -9,11 +9,16 @@ namespace s21 {
 template <typename T>
 class vector {
  public:
+  class VectorIterator;
+  class VectorConstIterator;
+
   using value_type = T;
   using reference = T &;
   using const_reference = const T &;
-  using iterator = T *;
-  using const_iterator = const T *;
+  using iterator_pointer = T *;
+  using const_iterator_pointer = const T *;
+  using iterator = vector<T>::VectorIterator;
+  using const_iterator = vector<T>::VectorConstIterator;
   using size_type = size_t;
 
   vector();
@@ -29,7 +34,7 @@ class vector {
   const_reference operator[](size_type pos) const;
   const_reference front() const;
   const_reference back() const;
-  pointer data() noexcept;
+  iterator_pointer data() noexcept;
 
   iterator begin();
   iterator end();
@@ -51,10 +56,12 @@ class vector {
   void swap(vector& other);
 
  private:
-  pointer data_;
+  iterator_pointer data_;
   size_type size_;
   size_type capacity_;
 };
 }  // namespace s21
+
+//#include "s21_vector.tpp"
 
 #endif //CPP2_S21_CONTAINERS_1_S21_VECTOR_H
