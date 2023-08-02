@@ -32,7 +32,7 @@ class stack {
   stack &operator=(stack &&other) noexcept;
 
  private:
-  Container deque;
+  Container deque_;
 };
 }  // namespace s21
 #include "stack.tpp"

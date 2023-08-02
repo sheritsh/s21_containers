@@ -6,8 +6,8 @@ template <class T>
 list<T>::ListIterator::ListIterator(){};
 
 template <class T>
-list<T>::ListIterator::ListIterator(typename deque<T>::Node* node_)
-    : node_(node_) {}
+list<T>::ListIterator::ListIterator(typename deque<T>::Node* node)
+    : node_(node) {}
 
 template <class T>
 list<T>::ListIterator::ListIterator(typename deque<T>::Node* node,
@@ -198,7 +198,7 @@ typename deque<T>::Node* list<T>::MergeSort(typename deque<T>::Node* head) {
   middle->next = nullptr;
   typename deque<T>::Node* left = MergeSort(head);
   typename deque<T>::Node* right = MergeSort(nextOfMiddle);
-  return merge(left, right);
+  return Merge(left, right);
 }
 
 template <class T>
@@ -213,7 +213,7 @@ typename deque<T>::Node* list<T>::GetMiddle(typename deque<T>::Node* head) {
 }
 
 template <class T>
-typename deque<T>::Node* list<T>::merge(typename deque<T>::Node* left,
+typename deque<T>::Node* list<T>::Merge(typename deque<T>::Node* left,
                                         typename deque<T>::Node* right) {
   typename deque<T>::Node* result = nullptr;
   if (left == nullptr) {
@@ -223,10 +223,10 @@ typename deque<T>::Node* list<T>::merge(typename deque<T>::Node* left,
   }
   if (left->value <= right->value) {
     result = left;
-    result->next = merge(left->next, right);
+    result->next = Merge(left->next, right);
   } else {
     result = right;
-    result->next = merge(left, right->next);
+    result->next = Merge(left, right->next);
   }
   return result;
 }

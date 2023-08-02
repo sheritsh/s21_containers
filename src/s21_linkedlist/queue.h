@@ -33,7 +33,7 @@ class queue {
   queue &operator=(queue &&other) noexcept;
 
  private:
-  Container deque;
+  Container deque_;
 };
 }  // namespace s21
 #include "queue.tpp"
