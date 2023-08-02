@@ -153,7 +153,69 @@ if (size_ < capacity_) {
   data_ = new_data;
   capacity_ = size_;
 }
+}
 
+template <typename T>
+void vector<T>::clear() {
+  size_ = 0;
+}
+
+template <typename T>
+typename vector<T>::iterator vector<T>::insert(s21::vector::iterator pos, s21::vector::const_reference value) {
+  size_type idx = pos - begin();
+
+  if (idx > size_) {
+    throw std::out_of_range("InsertError: The insertion position is out of range of the vector memory")
+  }
+
+  if (size_ == capacity_) {
+    reserve(capacity_ ? capacity_ * 2 : 1);
+  }
+
+  iterator new_pos = begin() + idx;
+
+  if (new_pos != end()) {
+    std::copy_backward(new_pos, end(), end() + 1);
+  }
+
+  *new_pos = value;
+  ++size_;
+
+  return new_pos;
+}
+
+template <typename T>
+void vector<T>::erase(s21::vector::iterator pos) {
+  size_type current_pos = std::distance(begin(), pos);
+
+  if (position >= size_) {
+    throw std::out_of_range("EraseError: Index out of range");
+  }
+
+  std::move(pos + 1, end(), pos);
+  --size_;
+}
+
+template <typename T>
+void vector<T>::push_back(s21::vector::const_reference value) {
+  if (size_ == capacity_) {
+    reserve(capacity_ ? capacity_ * 2 : 1);
+  }
+  data_[size_++] = value;
+}
+
+template <typename T>
+void vector<T>::pop_back() {
+  if (size_ > 0) {
+    --size_;
+  }
+}
+
+template <typename T>
+void vector<T>::swap(vector <T> &other) {
+  std::swap(size_, other.size_);
+  std::swap(capacity_, other.capacity_);
+  std::swap(data_, other.data_);
 }
 
 }  // namespace s21
