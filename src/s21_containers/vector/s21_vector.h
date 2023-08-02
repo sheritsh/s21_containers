@@ -1,5 +1,5 @@
-#ifndef CPP2_S21_CONTAINERS_1_S21_VECTOR_H
-#define CPP2_S21_CONTAINERS_1_S21_VECTOR_H
+#ifndef CPP2_S21_CONTAINERS_1_SRC_S21_CONTAINERS_VECTOR_S21_VECTOR_H
+#define CPP2_S21_CONTAINERS_1_SRC_S21_CONTAINERS_VECTOR_S21_VECTOR_H
 
 #include <iostream>
 #include <limits>
@@ -65,4 +65,4 @@ class vector {
 #include "s21_vector.tpp"
 #include "s21_vector_iterators.h"
 
-#endif //CPP2_S21_CONTAINERS_1_S21_VECTOR_H
+#endif //CPP2_S21_CONTAINERS_1_SRC_S21_CONTAINERS_VECTOR_S21_VECTOR_H
