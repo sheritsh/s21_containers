@@ -107,11 +107,53 @@ typename vector<T>::const_iterator vector<T>::cend() const {
  return const_iterator (data_ + size_);
 }
 
-bool empty() const;
-size_type size() const;
-size_type max_size() const;
-void reserve(size_type size);
-size_type capacity() const;
-void shrink_to_fit();
+template <typename T>
+bool vector<T>::empty() const {
+  return size_ == 0;
+}
+
+template <typename T>
+typename vector<T>::size_type vector<T>::size() const {
+  return size_;
+}
+
+template <typename T>
+typename vector<T>::size_type vector<T>::max_size() const {
+  return std::numeric_limits<std::size_t>::max() / sizeof(value_type) / 2;
+}
+
+template <typename T>
+void vector<T>::reserve(s21::vector::size_type new_capacity) {
+  if (new_capacity <= capacity_) {
+    return;
+  }
+
+  if (new_capacity > max_size()) {
+    throw std::out_of_range("ReserveError: Too large size for a new capacity");
+  }
+
+  const_iterator_pointer new_data = value_type[new_capacity];
+  std::copy(data_, data_ + size_, new_data);
+  delete[] data_;
+  data_ = new_data;
+  capacity_ = new_capacity;
+}
+
+template <typename T>
+typename vector<T>::size_type vector<T>::capacity() const {
+  return capacity_;
+}
+
+template <typename T>
+void vector<T>::shrink_to_fit() {
+if (size_ < capacity_) {
+  const_iterator_pointer new_data = new value_type[size_];
+  std::copy(data_, data_ + size_, new_data);
+  delete[] data_;
+  data_ = new_data;
+  capacity_ = size_;
+}
+
+}
 
 }  // namespace s21
