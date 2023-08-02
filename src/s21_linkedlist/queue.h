@@ -29,6 +29,9 @@ class queue {
 
   void swap(queue &other);
 
+  template <class... Args>
+  void insert_many_back(Args &&...args);
+  
   queue &operator=(const queue &other);
   queue &operator=(queue &&other) noexcept;
 

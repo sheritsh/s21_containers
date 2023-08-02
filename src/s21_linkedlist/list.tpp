@@ -335,4 +335,29 @@ void list<T>::erase(iterator pos) {
   }
 }
 
+template <class T>
+template <class... Args>
+typename list<T>::iterator list<T>::insert_many(const_iterator pos, Args&&... args) {
+    for (const auto& arg : {args...}) {
+        insert(pos, arg);
+    }
+    return pos;
+}
+
+template <class T>
+template <class... Args>
+void list<T>::insert_many_back(Args&&... args) {
+    for (const auto& arg : {args...}) {
+        push_back(arg);
+    }
+}
+
+template <class T>
+template <class... Args>
+void list<T>::insert_many_front(Args&&... args) {
+    for (const auto& arg : {args...}) {
+        push_front(arg);
+    }
+}
+
 }  // namespace s21

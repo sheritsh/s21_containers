@@ -67,4 +67,13 @@ template <class T, class Container>
 typename queue<T, Container>::size_type queue<T, Container>::size() const {
   return deque_.size();
 }
+
+template <class T, class Container>
+template <class... Args>
+void queue<T, Container>::insert_many_back(Args&&... args) {
+  for (const auto& arg : {args...}) {
+    deque_.push_back(arg);
+  }
+}
+
 }  // namespace s21

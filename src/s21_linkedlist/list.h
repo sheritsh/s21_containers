@@ -79,6 +79,13 @@ class list : public deque<T> {
   void unique();
   void sort();
 
+  template <class... Args>
+  iterator insert_many(const_iterator pos, Args &&...args);
+  template <class... Args>
+  void insert_many_back(Args &&...args);
+  template <class... Args>
+  void insert_many_front(Args &&...args);
+
   list &operator=(const list &other);
   list &operator=(list &&other) noexcept;
 

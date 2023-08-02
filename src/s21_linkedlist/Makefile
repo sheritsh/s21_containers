@@ -1,5 +1,5 @@
 all: clean
-	gcc -Wall -Werror -Wextra -std=c++17 -O3 -lstdc++ list.cc
+	gcc -Wall -Werror -Wextra -std=c++17 -O3 -lstdc++ stack.cc
 
 clean:
 	@echo "Deleting unnecessary files..."

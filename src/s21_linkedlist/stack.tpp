@@ -4,7 +4,7 @@ stack<T, Container>::stack() : deque_() {}
 
 template <class T, class Container>
 stack<T, Container>::stack(std::initializer_list<value_type> const& items) {
-    for (auto i = items.begin(); i != items.end(); i++) push(*i);
+  for (auto i = items.begin(); i != items.end(); i++) push(*i);
 }
 
 template <class T, class Container>
@@ -61,4 +61,13 @@ template <class T, class Container>
 typename stack<T, Container>::size_type stack<T, Container>::size() const {
   return deque_.size();
 }
+
+template <class T, class Container>
+template <class... Args>
+void stack<T, Container>::insert_many_front(Args&&... args) {
+  for (const auto& arg : {args...}) {
+    deque_.push_front(arg);
+  }
+}
+
 }  // namespace s21

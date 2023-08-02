@@ -655,6 +655,7 @@ TEST(ListTest, begin_2) {
   EXPECT_EQ(*my_list1.begin(), *std_list2.begin());
 }
 
+//
 TEST(ListTest, end_1) {
   s21::list<int> my_list1{500, 15000, 30000};
 
@@ -662,6 +663,7 @@ TEST(ListTest, end_1) {
   EXPECT_EQ(*my_list1.begin(), *std_list2.begin());
 }
 
+//
 TEST(ListTest, Merge_1) {
   s21::list<int> my_list1{1, 9999, 20000};
   s21::list<int> my_list2{500, 15000, 30000};
@@ -819,7 +821,7 @@ TEST(ListTest, Splice_4) {
   std_list1.splice(std_list1.begin(), std_list2);
   EXPECT_TRUE(compare_lists(my_list1, std_list1));
 }
-
+//
 TEST(ListTest, Insert_1) {
   s21::list<int> my_list1{1, 9999, 20000};
   my_list1.insert(my_list1.begin(), 5);
@@ -849,7 +851,7 @@ TEST(ListTest, Insert_3) {
 
   EXPECT_TRUE(compare_lists(my_list1, std_list1));
 }
-
+//
 TEST(ListTest, Insert_4) {
   s21::list<int> my_list1;
   my_list1.insert(my_list1.end(), 5);
@@ -859,7 +861,7 @@ TEST(ListTest, Insert_4) {
 
   EXPECT_TRUE(compare_lists(my_list1, std_list1));
 }
-
+//
 TEST(ListTest, Insert_5) {
   s21::list<int> my_list1(4);
   my_list1.insert(my_list1.begin(), 5);
@@ -1036,11 +1038,6 @@ TEST_F(S21queueTest, Push) {
   s21_queue_empty.push(1123213);
   std_queue_empty.push(1123213);
 
-  // s21_queue_empty.front() = 21;
-  // std_queue_empty.front() = 21;
-
-  // s21_queue_empty.back() = 42;
-  // std_queue_empty.back() = 42;
   EXPECT_EQ(s21_queue_empty.front(), std_queue_empty.front());
   EXPECT_EQ(s21_queue_empty.back(), std_queue_empty.back());
   EXPECT_EQ(s21_queue_empty.size(), std_queue_empty.size());
@@ -1099,7 +1096,7 @@ TEST_F(S21queueTest, Swap) {
 //   EXPECT_EQ(s21_queue_emplace.size(), std_queue_emplace.size());
 //   EXPECT_EQ(s21_queue_emplace.front(), std_queue_emplace.front());
 //   EXPECT_EQ(s21_queue_emplace.back(), std_queue_emplace.back());
-//   s21_queue_emplace.emplace_back(4, 5);
+//   s21_queue_emplace.insert_many_back(4, 5);
 //   std_queue_emplace.emplace(4, 5);
 //   EXPECT_EQ(s21_queue_emplace.size(), std_queue_emplace.size());
 //   EXPECT_EQ(s21_queue_emplace.front(), std_queue_emplace.front());
@@ -1281,7 +1278,7 @@ TEST_F(S21stackTest, Swap) {
 //   std_stack_emplace.push(Example(1, 2));
 //   EXPECT_EQ(s21_stack_emplace.size(), std_stack_emplace.size());
 //   EXPECT_EQ(s21_stack_emplace.top(), std_stack_emplace.top());
-//   s21_stack_emplace.emplace_front(4, 5);
+//   s21_stack_emplace.insert_many_front(4, 5);
 //   std_stack_emplace.emplace(4, 5);
 //   EXPECT_EQ(s21_stack_emplace.size(), std_stack_emplace.size());
 //   EXPECT_EQ(s21_stack_emplace.top(), std_stack_emplace.top());

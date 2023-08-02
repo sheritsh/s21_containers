@@ -28,6 +28,9 @@ class stack {
 
   void swap(stack &other);
 
+  template <class... Args>
+  void insert_many_front(Args &&...args);
+
   stack &operator=(const stack &other);
   stack &operator=(stack &&other) noexcept;
 
