@@ -7,7 +7,6 @@
 
 #include <iostream>
 
-
 template<typename Key, typename Value>
 class AVLTree {
 protected:
@@ -24,19 +23,18 @@ public:
     using const_iterator = ConstIterator;
     using size_type = size_t;
 
-
     class Iterator {
     public:
         Iterator();
         Iterator(Node* node, Node* past_node = nullptr);
-        Iterator& operator++();
-        Iterator operator++(int);
-        Iterator& operator--();
-        Iterator operator--(int);
-        Value& operator*();
-        bool operator==(const Iterator& it);
-        bool operator!=(const Iterator& it);
+        iterator& operator++();
+        iterator operator++(int);
+        iterator& operator--();
+        iterator operator--(int);
+        reference operator*();
+        bool operator==(const iterator& it);
         friend class AVLTree<Key, Value>;
+        bool operator!=(const iterator& it);
 
     protected:
         Node* iter_node_; // посмотреть куда пихнуть. протектед или приват
@@ -44,11 +42,10 @@ public:
         Node* MoveForward(Node* node);
         Node* MoveBack(Node* node);
     };
-
-    class ConstIterator : Iterator {
+    class ConstIterator : public Iterator {
     public:
         ConstIterator() : Iterator(){};
-        const Value& operator*() const {return Iterator::operator*();};
+        const_reference operator*() const {return Iterator::operator*();};
     };
 
     AVLTree();
@@ -57,62 +54,49 @@ public:
     ~AVLTree();
     AVLTree& operator=(AVLTree &&other) noexcept;
     AVLTree& operator=(const AVLTree &other);
-
-     Iterator Begin();
-     Iterator End();
-
-    bool Empty();
-    size_t Size();
+     iterator begin();
+     iterator end();
+    bool empty();
+    size_t size();
 //    size_t Max_size();
-
-    void Clear();
-    std::pair<iterator, bool> Insert(const Key& key);
-    void Erase(iterator pos);
-
-    void Swap(AVLTree& other);
-    void Merge(AVLTree& other);
-
-
-    bool Contains(const Key& key);
-
+    void clear();
+    std::pair<iterator, bool> insert(const Key& key);
+    void erase(iterator pos);
+    void swap(AVLTree& other);
+    void merge(AVLTree& other);
+    bool contains(const Key& key);
     void PrintBinaryTree(); // ТОЖЕ удалить
 
 protected:
     iterator Find(const Key& key);
     struct Node {
-        Node(Key key, Value value);
-        Node(Key key, Value value, Node* parent);
+        Node(Key key, value_type value);
+        Node(Key key, value_type value, Node* parent);
         Key key_;
-        Value value_;
+        value_type value_;
         Node* left_ = nullptr;
         Node* right_ = nullptr;
         Node* parent_ = nullptr;
         int height_ = 0;
         friend class AVLTree<Key, Value>;
     };
-
     Node* root_;
     // SUPPORT FOR CONSTRUCTORS
     void FreeNode(Node* node);
     Node* CopyTree(Node* node, Node* parent);
-
     // PRINT
     void PrintTree(Node* root, const std::string& prefix, bool isLeft); // УДАЛИТЬ
-
     // AVL BALANCE
     void SwapValue(Node* a, Node* b); // swap only key and value
-
     void RightRotate(Node* node);
     void LeftRotate(Node* node);
     void Balance(Node* node);
     int GetBalance(Node* node);
     int GetHeight(Node* node);
     void SetHeight(Node* node);
-
     // MIN && MAX
     static Node* GetMin(Node* node);
     static Node* GetMax(Node* node);
-
     // RECURSIVE SUPPORT FUNCTIONS
     bool RecursiveInsert(Node* node, const Key& key, Value value);
     Node* RecursiveDelete(Node* node, Key key);
