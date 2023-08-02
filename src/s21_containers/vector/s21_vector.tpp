@@ -1,4 +1,5 @@
-#include "s21_vector.h"
+#ifndef CPP2_S21_CONTAINERS_1_S21_VECTOR_TPP
+#define CPP2_S21_CONTAINERS_1_S21_VECTOR_TPP
 
 namespace s21 {
 
@@ -12,11 +13,11 @@ vector<T>::vector(size_type n) : data_(new value_type[n]), size_(n), capacity_(n
 
 template <typename T>
 vector<T>::vector(std::initializer_list<value_type> const &items)
-  : data_(new value_type[items.size()]),
-    size_(items.size()),
-    capacity_(items.size()) { // items.capacity
-      std::copy(items.begin(), items.end(), data_);
-  }
+    : data_(new value_type[items.size()]),
+      size_(items.size()),
+      capacity_(items.size()) {
+  std::copy(items.begin(), items.end(), data_);
+}
 
 template <typename T>
 vector<T>::vector(const vector &v)
@@ -74,12 +75,12 @@ typename vector<T>::const_reference vector<T>::operator[](s21::vector::size_type
 
 template <typename T>
 typename vector<T>::const_reference vector<T>::front() const {
-size_ == 0 ? throw std::out_of_range("FrontError: vector is empty") : return data_[0];
+size_ ? return data_[0] : throw std::out_of_range("FrontError: vector is empty");
 }
 
 template <typename T>
 typename vector<T>::const_reference vector<T>::back() const {
-  size_ == 0 ? throw std::out_of_range("BackError: vector is empty") : return data_[size_ - 1];
+  size_ ? return data_[size_ - 1] : throw std::out_of_range("BackError: vector is empty");
 }
 
 template <typename T>
@@ -104,7 +105,7 @@ typename vector<T>::const_iterator vector<T>::cbegin() const {
 
 template <typename T>
 typename vector<T>::const_iterator vector<T>::cend() const {
- return const_iterator (data_ + size_);
+ return const_iterator(data_ + size_);
 }
 
 template <typename T>
@@ -146,13 +147,13 @@ typename vector<T>::size_type vector<T>::capacity() const {
 
 template <typename T>
 void vector<T>::shrink_to_fit() {
-if (size_ < capacity_) {
-  const_iterator_pointer new_data = new value_type[size_];
-  std::copy(data_, data_ + size_, new_data);
-  delete[] data_;
-  data_ = new_data;
-  capacity_ = size_;
-}
+  if (size_ < capacity_) {
+    const_iterator_pointer new_data = new value_type[size_];
+    std::copy(data_, data_ + size_, new_data);
+    delete[] data_;
+    data_ = new_data;
+    capacity_ = size_;
+  }
 }
 
 template <typename T>
@@ -213,9 +214,11 @@ void vector<T>::pop_back() {
 
 template <typename T>
 void vector<T>::swap(vector <T> &other) {
+  std::swap(data_, other.data_);
   std::swap(size_, other.size_);
   std::swap(capacity_, other.capacity_);
-  std::swap(data_, other.data_);
 }
 
 }  // namespace s21
+
+#endif //CPP2_S21_CONTAINERS_1_S21_VECTOR_TPP

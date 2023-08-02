@@ -62,6 +62,7 @@ class vector {
 };
 }  // namespace s21
 
-//#include "s21_vector.tpp"
+#include "s21_vector.tpp"
+#include "s21_vector_iterators.h"
 
 #endif //CPP2_S21_CONTAINERS_1_S21_VECTOR_H
