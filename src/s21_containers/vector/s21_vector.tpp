@@ -206,7 +206,7 @@ template <typename T>
 void vector<T>::erase(iterator pos) {
   size_type position = pos - data_;
 
-  if (position < 0 || position >= size_) {
+  if (position < 0 || position > size_) {
     throw std::out_of_range("EraseError: Index out of range");
   }
 
@@ -236,6 +236,26 @@ void vector<T>::swap(vector<T> &other) {
   std::swap(data_, other.data_);
   std::swap(size_, other.size_);
   std::swap(capacity_, other.capacity_);
+}
+
+template <typename T>
+template <typename... Args>
+typename vector<T>::iterator vector<T>::insert_many(const_iterator pos,
+                                                    Args &&...args) {
+  vector<value_type> tmp{args...};
+  iterator cur_pos = begin() + (pos - cbegin());
+  for (size_t i = 0; i < tmp.size(); ++i) {
+    cur_pos = insert(cur_pos, tmp[i]);
+    ++cur_pos;
+  }
+
+  return cur_pos;
+}
+
+template <typename T>
+template <typename... Args>
+void vector<T>::insert_many_back(Args &&...args) {
+  insert_many(cend(), args...);
 }
 
 }  // namespace s21
