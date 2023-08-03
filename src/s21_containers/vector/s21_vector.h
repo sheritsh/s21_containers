@@ -27,7 +27,7 @@ class vector {
   vector(const vector &v);
   vector(vector &&v) noexcept;
   ~vector();
-  vector& operator=(vector &&v) noexcept;
+  vector &operator=(vector &&v) noexcept;
 
   reference at(size_type pos);
   reference operator[](size_type pos);
@@ -53,7 +53,7 @@ class vector {
   void erase(iterator pos);
   void push_back(const_reference value);
   void pop_back();
-  void swap(vector& other);
+  void swap(vector &other);
 
  private:
   iterator_pointer data_;
@@ -65,4 +65,4 @@ class vector {
 #include "s21_vector.tpp"
 #include "s21_vector_iterators.h"
 
-#endif //CPP2_S21_CONTAINERS_1_SRC_S21_CONTAINERS_VECTOR_S21_VECTOR_H
+#endif  // CPP2_S21_CONTAINERS_1_SRC_S21_CONTAINERS_VECTOR_S21_VECTOR_H

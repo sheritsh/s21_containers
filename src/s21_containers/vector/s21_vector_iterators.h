@@ -1,7 +1,6 @@
 #ifndef CPP2_S21_CONTAINERS_1_SRC_S21_CONTAINERS_VECTOR_S21_VECTOR_ITERATORS_H_
 #define CPP2_S21_CONTAINERS_1_SRC_S21_CONTAINERS_VECTOR_S21_VECTOR_ITERATORS_H_
 
-
 namespace s21 {
 
 template <typename T>
@@ -13,13 +12,13 @@ class vector<T>::VectorIterator {
   reference operator*();
   VectorIterator operator++(int);
   VectorIterator operator--(int);
-  VectorIterator&  operator++();
-  VectorIterator&  operator--();
+  VectorIterator& operator++();
+  VectorIterator& operator--();
   bool operator==(const VectorIterator& other) const;
   bool operator!=(const VectorIterator& other) const;
   VectorIterator operator+(int n) const;
   VectorIterator operator-(int n) const;
-  ptrdiff_t operator-(const VectorIterator &other) const;
+  ptrdiff_t operator-(const VectorIterator& other) const;
 
  private:
   iterator_pointer ptr_;
@@ -34,13 +33,13 @@ class vector<T>::VectorConstIterator : public VectorIterator {
   const_reference operator*() const;
   VectorConstIterator operator++(int);
   VectorConstIterator operator--(int);
-  VectorConstIterator&  operator++();
-  VectorConstIterator&  operator--();
+  VectorConstIterator& operator++();
+  VectorConstIterator& operator--();
   bool operator==(const VectorConstIterator& other) const;
   bool operator!=(const VectorConstIterator& other) const;
   VectorConstIterator operator+(int n) const;
   VectorConstIterator operator-(int n) const;
-  ptrdiff_t operator-(const VectorConstIterator &other) const;
+  ptrdiff_t operator-(const VectorConstIterator& other) const;
 
  private:
   const_iterator_pointer ptr_;
@@ -50,4 +49,4 @@ class vector<T>::VectorConstIterator : public VectorIterator {
 
 #include "s21_vector_iterators.tpp"
 
-#endif //CPP2_S21_CONTAINERS_1_SRC_S21_CONTAINERS_VECTOR_S21_VECTOR_ITERATORS_H_
+#endif  // CPP2_S21_CONTAINERS_1_SRC_S21_CONTAINERS_VECTOR_S21_VECTOR_ITERATORS_H_

@@ -7,8 +7,8 @@ template <typename T, std::size_t N>
 array<T, N>::array() : size_(N) {}
 
 template <typename T, std::size_t N>
-array<T, N>::array(const std::initializer_list <value_type> &items) {
-  std::copy(items.begin(), items.end(), elems);
+array<T, N>::array(const std::initializer_list<value_type> &items) {
+  std::copy(items.begin(), items.end(), elems_);
 }
 
 template <typename T, std::size_t N>
@@ -18,7 +18,7 @@ array<T, N>::array(const array<T, N> &a) {
 
 template <typename T, std::size_t N>
 array<T, N>::array(array<T, N> &&a) noexcept {
-std::move(a.elems_, a.elems_ + N, elems_);
+  std::move(a.elems_, a.elems_ + N, elems_);
 }
 
 template <typename T, std::size_t N>
@@ -42,12 +42,12 @@ typename array<T, N>::const_iterator array<T, N>::cend() const {
 }
 
 template <typename T, std::size_t N>
-typename array<T, N>::reference array<T, N>::at(s21::array::size_type pos) {
+typename array<T, N>::reference array<T, N>::at(size_type pos) {
   return (*this)[pos];
 }
 
 template <typename T, std::size_t N>
-typename array<T, N>::const_reference array<T, N>::at(s21::array::size_type pos) const {
+typename array<T, N>::const_reference array<T, N>::at(size_type pos) const {
   return (*this)[pos];
 }
 
@@ -87,25 +87,25 @@ typename array<T, N>::size_type array<T, N>::max_size() {
 }
 
 template <typename T, std::size_t N>
-void array<T, N>::swap(array <T, N> &a) {
+void array<T, N>::swap(array<T, N> &a) {
   std::swap_ranges(elems_, elems_ + N, a.elems_);
 }
 
 template <typename T, std::size_t N>
-void array<T, N>::fill(s21::array::const_reference value) {
+void array<T, N>::fill(const_reference value) {
   std::fill(elems_, elems_ + N, value);
 }
 
 template <typename T, std::size_t N>
-typename array<T, N>::array& array<T, N>::operator=(const array <T, N> &a) {
+typename array<T, N>::array &array<T, N>::operator=(const array<T, N> &a) {
   std::copy(a.elems_, a.elems_ + N, elems_);
 
   return *this;
 }
 
 template <typename T, std::size_t N>
-typename array<T, N>::array& array<T, N>::operator=(array <T, N> &&a) noexcept {
-  for (size_t i = 0; i < Size; ++i) {
+typename array<T, N>::array &array<T, N>::operator=(array<T, N> &&a) noexcept {
+  for (size_t i = 0; i < N; ++i) {
     elems_[i] = std::move(a.elems_[i]);
   }
 
@@ -113,7 +113,7 @@ typename array<T, N>::array& array<T, N>::operator=(array <T, N> &&a) noexcept {
 }
 
 template <typename T, std::size_t N>
-typename array<T, N>::reference array<T, N>::operator[](s21::array::size_type pos) {
+typename array<T, N>::reference array<T, N>::operator[](size_type pos) {
   if (pos >= N) {
     throw std::out_of_range("OutOfRangeError: Index out of array range");
   }
@@ -122,7 +122,8 @@ typename array<T, N>::reference array<T, N>::operator[](s21::array::size_type po
 }
 
 template <typename T, std::size_t N>
-typename array<T, N>::const_reference array<T, N>::operator[](s21::array::size_type pos) const {
+typename array<T, N>::const_reference array<T, N>::operator[](
+    size_type pos) const {
   if (pos >= N) {
     throw std::out_of_range("OutOfRangeError: Index out of array range");
   }
@@ -132,4 +133,4 @@ typename array<T, N>::const_reference array<T, N>::operator[](s21::array::size_t
 
 }  // namespace s21
 
-#endif //CPP2_S21_CONTAINERS_1_S21_ARRAY_TPP
+#endif  // CPP2_S21_CONTAINERS_1_S21_ARRAY_TPP

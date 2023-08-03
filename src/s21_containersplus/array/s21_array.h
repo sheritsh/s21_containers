@@ -5,7 +5,7 @@
 #include <limits>
 
 namespace s21 {
-template<typename T, std::size_t N>
+template <typename T, std::size_t N>
 class array {
  public:
   using value_type = T;
@@ -16,7 +16,7 @@ class array {
   using size_type = size_t;
 
   array();
-  array(std::initializer_list <value_type> const &items);
+  array(std::initializer_list<value_type> const &items);
   array(const array &a);
   array(array &&a) noexcept;
   ~array() = default;
@@ -54,4 +54,4 @@ class array {
 
 #include "s21_array.tpp"
 
-#endif //CPP2_S21_CONTAINERS_1_S21_ARRAY_H
+#endif  // CPP2_S21_CONTAINERS_1_S21_ARRAY_H
