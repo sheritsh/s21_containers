@@ -2,8 +2,8 @@
 // Created by Oznak Banshee on 7/14/23.
 //
 
-#ifndef CONTAINERS_AVLTREE_H
-#define CONTAINERS_AVLTREE_H
+#ifndef CPP2_S21_CONTAINERS_S21_CONTAINERS_AVLTREE_AVLTREE_H_
+#define CPP2_S21_CONTAINERS_S21_CONTAINERS_AVLTREE_AVLTREE_H_
 
 #include <iostream>
 
@@ -103,4 +103,4 @@ class AVLTree {
 };
 
 #include "AVLTree.tpp"
-#endif  // CONTAINERS_AVLTREE_H
+#endif  // CPP2_S21_CONTAINERS_S21_CONTAINERS_AVLTREE_AVLTREE_H_

@@ -2,8 +2,8 @@
 // Created by Oznak Banshee on 7/31/23.
 //
 
-#ifndef CONTAINERS_MAP_H
-#define CONTAINERS_MAP_H
+#ifndef CPP2_S21_CONTAINERS_S21_CONTAINERS_MAP_MAP_H_
+#define CPP2_S21_CONTAINERS_S21_CONTAINERS_MAP_MAP_H_
 
 #include "../AvlTree/AVLTree.h"
 
@@ -77,4 +77,4 @@ class map : public AVLTree<Key, T> {
 
 #include "s21_map.tpp"
 
-#endif  // CONTAINERS_MAP_H
+#endif  // CPP2_S21_CONTAINERS_S21_CONTAINERS_MAP_MAP_H_
