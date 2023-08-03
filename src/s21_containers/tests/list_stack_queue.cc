@@ -4,9 +4,11 @@
 #include <queue>
 #include <stack>
 
-#include "list.h"
-#include "queue.h"
-#include "stack.h"
+#include "../list/list.h"
+#include "../queue/queue.h"
+#include "../stack/stack.h"
+
+// #include "../s21_containers.h"
 
 // STACK
 

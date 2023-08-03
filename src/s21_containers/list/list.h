@@ -52,10 +52,10 @@ class list : public deque<T> {
   using iterator = ListIterator;
   using const_iterator = ListConstIterator;
 
-  const_iterator cbegin() const;
-  const_iterator cend() const;
   iterator begin();
   iterator end();
+  const_iterator cbegin() const;
+  const_iterator cend() const;
 
   list();
   list(size_type n);

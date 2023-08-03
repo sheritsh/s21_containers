@@ -109,7 +109,8 @@ typename list<T>::iterator list<T>::begin() {
 
 template <class T>
 typename list<T>::iterator list<T>::end() {
-  return this->list_.head ? iterator(this->list_.tail->next, this->list_.tail) : begin();
+  return this->list_.head ? iterator(this->list_.tail->next, this->list_.tail)
+                          : begin();
 }
 
 template <class T>
@@ -337,27 +338,28 @@ void list<T>::erase(iterator pos) {
 
 template <class T>
 template <class... Args>
-typename list<T>::iterator list<T>::insert_many(const_iterator pos, Args&&... args) {
-    for (const auto& arg : {args...}) {
-        insert(pos, arg);
-    }
-    return pos;
+typename list<T>::iterator list<T>::insert_many(const_iterator pos,
+                                                Args&&... args) {
+  for (const auto& arg : {args...}) {
+    insert(pos, arg);
+  }
+  return pos;
 }
 
 template <class T>
 template <class... Args>
 void list<T>::insert_many_back(Args&&... args) {
-    for (const auto& arg : {args...}) {
-        push_back(arg);
-    }
+  for (const auto& arg : {args...}) {
+    push_back(arg);
+  }
 }
 
 template <class T>
 template <class... Args>
 void list<T>::insert_many_front(Args&&... args) {
-    for (const auto& arg : {args...}) {
-        push_front(arg);
-    }
+  for (const auto& arg : {args...}) {
+    push_front(arg);
+  }
 }
 
 }  // namespace s21

@@ -103,15 +103,15 @@ const typename deque<T>::value_type &deque<T>::back() const {
 
 template <class T>
 void deque<T>::push_front(const_reference data) {
-  Node *tmp = new Node(data);
-  tmp->next = list_.head;
-  tmp->prev = nullptr;
+  Node *node = new Node(data);
+  node->next = list_.head;
+  node->prev = nullptr;
   if (list_.head) {
-    list_.head->prev = tmp;
+    list_.head->prev = node;
   }
-  list_.head = tmp;
+  list_.head = node;
   if (list_.tail == nullptr) {
-    list_.tail = tmp;
+    list_.tail = node;
   }
   ++list_.size;
 }
@@ -119,29 +119,29 @@ void deque<T>::push_front(const_reference data) {
 template <class T>
 void deque<T>::pop_front() {
   if (list_.head) {
-    Node *tmp = list_.head;
+    Node *node = list_.head;
     list_.head = list_.head->next;
     if (list_.head) {
       list_.head->prev = nullptr;
     } else {
       list_.tail = nullptr;
     }
-    delete tmp;
+    delete node;
     --list_.size;
   }
 }
 
 template <class T>
 void deque<T>::push_back(const_reference data) {
-  Node *tmp = new Node(data);
-  tmp->prev = list_.tail;
-  tmp->next = nullptr;
+  Node *node = new Node(data);
+  node->prev = list_.tail;
+  node->next = nullptr;
   if (list_.tail) {
-    list_.tail->next = tmp;
+    list_.tail->next = node;
   }
-  list_.tail = tmp;
+  list_.tail = node;
   if (list_.head == nullptr) {
-    list_.head = tmp;
+    list_.head = node;
   }
   ++list_.size;
 }
@@ -149,14 +149,14 @@ void deque<T>::push_back(const_reference data) {
 template <class T>
 void deque<T>::pop_back() {
   if (list_.tail) {
-    Node *tmp = list_.tail;
+    Node *node = list_.tail;
     list_.tail = list_.tail->prev;
     if (list_.tail) {
       list_.tail->next = nullptr;
     } else {
       list_.head = nullptr;
     }
-    delete tmp;
+    delete node;
     --list_.size;
   }
 }
