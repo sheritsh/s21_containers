@@ -55,7 +55,7 @@ vector<T> &vector<T>::operator=(vector<T> &&v) noexcept {
 
 template <typename T>
 typename vector<T>::reference vector<T>::at(size_type pos) {
-  if (pos >= size_ || pos < 0) {
+  if (pos >= size_) {
     throw std::out_of_range("AtError: Index out of range");
   }
 
@@ -64,7 +64,7 @@ typename vector<T>::reference vector<T>::at(size_type pos) {
 
 template <typename T>
 typename vector<T>::reference vector<T>::operator[](size_type pos) {
-  if (pos >= size_ || pos < 0) {
+  if (pos >= size_) {
     throw std::out_of_range("IndexError: Index out of range");
   }
 
@@ -73,7 +73,7 @@ typename vector<T>::reference vector<T>::operator[](size_type pos) {
 
 template <typename T>
 typename vector<T>::const_reference vector<T>::operator[](size_type pos) const {
-  if (pos >= size_ || pos < 0) {
+  if (pos >= size_) {
     throw std::out_of_range("IndexError: Index out of range");
   }
 
@@ -206,7 +206,7 @@ template <typename T>
 void vector<T>::erase(iterator pos) {
   size_type position = pos - data_;
 
-  if (position < 0 || position > size_) {
+  if (position > size_) {
     throw std::out_of_range("EraseError: Index out of range");
   }
 
