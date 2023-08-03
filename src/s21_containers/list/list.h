@@ -1,5 +1,5 @@
-#ifndef CONTAINERS_SRC_S21_LINKED_LIST_LIST_H_
-#define CONTAINERS_SRC_S21_LINKED_LIST_LIST_H_
+#ifndef CPP2_S21_CONTAINERS_S21_CONTAINERS_LIST_LIST_H_
+#define CPP2_S21_CONTAINERS_S21_CONTAINERS_LIST_LIST_H_
 
 #include <iostream>
 #include <limits>
@@ -99,4 +99,4 @@ class list : public deque<T> {
 
 #include "list.tpp"
 
-#endif  // CONTAINERS_SRC_S21_LINKED_LIST_LIST_H_
+#endif  // CPP2_S21_CONTAINERS_S21_CONTAINERS_LIST_LIST_H_

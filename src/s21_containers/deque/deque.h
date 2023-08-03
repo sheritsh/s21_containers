@@ -1,5 +1,5 @@
-#ifndef CONTAINERS_SRC_LINKEDLIST_H_
-#define CONTAINERS_SRC_LINKEDLIST_H_
+#ifndef CPP2_S21_CONTAINERS_S21_CONTAINERS_DEQUE_DEQUE_H_
+#define CPP2_S21_CONTAINERS_S21_CONTAINERS_DEQUE_DEQUE_H_
 
 #include <iostream>
 
@@ -58,4 +58,4 @@ class deque {
 }  // namespace s21
 #include "deque.tpp"
 
-#endif  // CONTAINERS_SRC_LINKEDLIST_H_
+#endif  // CPP2_S21_CONTAINERS_S21_CONTAINERS_DEQUE_DEQUE_H_
