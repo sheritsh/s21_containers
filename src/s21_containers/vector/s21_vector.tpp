@@ -37,17 +37,22 @@ vector<T>::vector(vector &&v) noexcept {
 
 template <typename T>
 vector<T>::~vector() {
+  delete[] data_;
+
   size_ = 0;
   capacity_ = 0;
-  delete[] data_;
   data_ = nullptr;
 }
 
 template <typename T>
 vector<T> &vector<T>::operator=(vector<T> &&v) noexcept {
   if (this != &v) {
-    clear();
-    new (this) vector(std::move(v));
+    this->swap(v);
+
+    delete[] v.data_;
+    v.size_ = 0;
+    v.capacity_ = 0;
+    v.data_ = nullptr;
   }
 
   return *this;

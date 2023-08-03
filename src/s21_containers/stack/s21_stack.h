@@ -39,6 +39,6 @@ class stack {
 };
 }  // namespace s21
 
-#include "stack.tpp"
+#include "s21_stack.tpp"
 
 #endif  // CPP2_S21_CONTAINERS_S21_CONTAINERS_STACK_STACK_H_

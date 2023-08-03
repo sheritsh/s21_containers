@@ -97,6 +97,6 @@ class list : public deque<T> {
 };
 }  // namespace s21
 
-#include "list.tpp"
+#include "s21_list.tpp"
 
 #endif  // CPP2_S21_CONTAINERS_S21_CONTAINERS_LIST_LIST_H_
