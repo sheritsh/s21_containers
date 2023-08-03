@@ -453,3 +453,40 @@ TEST(VectorTest, Swap_EmptyAndNonEmptyVectors) {
   EXPECT_EQ(v2.size(), 0);
   EXPECT_TRUE(v2.empty());
 }
+
+TEST(VectorTest, InsertMany) {
+  s21::vector<int> vec = {1, 2, 3, 7, 8};
+  s21::vector<int>::const_iterator pos = vec.cbegin() + 3;
+
+  vec.insert_many(pos, 4, 5, 6);
+
+  // Check the size of the vector after insertion
+  EXPECT_EQ(vec.size(), 8);
+
+  // Check the elements after insertion
+  EXPECT_EQ(vec[0], 1);
+  EXPECT_EQ(vec[1], 2);
+  EXPECT_EQ(vec[2], 3);
+  EXPECT_EQ(vec[3], 4);
+  EXPECT_EQ(vec[4], 5);
+  EXPECT_EQ(vec[5], 6);
+  EXPECT_EQ(vec[6], 7);
+  EXPECT_EQ(vec[7], 8);
+}
+
+TEST(VectorTest, InsertManyBack) {
+  s21::vector<int> vec = {1, 2, 3};
+
+  vec.insert_many_back(4, 5, 6);
+
+  // Check the size of the vector after insertion
+  EXPECT_EQ(vec.size(), 6);
+
+  // Check the elements after insertion
+  EXPECT_EQ(vec[0], 1);
+  EXPECT_EQ(vec[1], 2);
+  EXPECT_EQ(vec[2], 3);
+  EXPECT_EQ(vec[3], 4);
+  EXPECT_EQ(vec[4], 5);
+  EXPECT_EQ(vec[5], 6);
+}
