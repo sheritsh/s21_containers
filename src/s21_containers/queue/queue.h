@@ -39,6 +39,7 @@ class queue {
   Container deque_;
 };
 }  // namespace s21
+
 #include "queue.tpp"
 
 #endif  // CPP2_S21_CONTAINERS_S21_CONTAINERS_QUEUE_QUEUE_H_

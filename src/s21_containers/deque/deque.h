@@ -56,6 +56,7 @@ class deque {
   LinkedList list_;
 };
 }  // namespace s21
+
 #include "deque.tpp"
 
 #endif  // CPP2_S21_CONTAINERS_S21_CONTAINERS_DEQUE_DEQUE_H_

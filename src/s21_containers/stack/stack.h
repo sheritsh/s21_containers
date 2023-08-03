@@ -38,6 +38,7 @@ class stack {
   Container deque_;
 };
 }  // namespace s21
+
 #include "stack.tpp"
 
 #endif  // CPP2_S21_CONTAINERS_S21_CONTAINERS_STACK_STACK_H_
