@@ -98,17 +98,19 @@ TEST(VectorTest, MoveAssignmentOperator_NonEmptyToEmpty) {
 }
 
 TEST(VectorTest, MoveAssignmentOperator_EmptyToNonEmpty) {
-  s21::vector<int> v1 = {4, 5, 6};
-  s21::vector<int> v2;
+  s21::vector<int> v1;
+  s21::vector<int> v2 = {4, 5, 6};
   v2 = std::move(v1);
-  EXPECT_FALSE(v2.empty());
-  EXPECT_EQ(v2.size(), 3);
+  EXPECT_TRUE(v2.empty());
+  EXPECT_EQ(v2.size(), 0);
 }
 
 TEST(VectorTest, MoveAssignmentOperator_NonEmptyToNonEmpty) {
-  s21::vector<int> v1{1, 2, 3};
-  s21::vector<int> v2(std::move(v1));
-  EXPECT_NE(v2.size(), v1.size());
+  s21::vector<int> v1 = {1, 2, 3};
+  s21::vector<int> v2 = {4, 5, 6};
+  v2 = std::move(v1);
+  EXPECT_EQ(v2.size(), 3);
+  EXPECT_TRUE(v1.empty());  // Source vector should be empty after move
 }
 
 TEST(VectorTest, At_ValidIndex) {
