@@ -18,8 +18,7 @@ class array {
   array();
   array(std::initializer_list <value_type> const &items);
   array(const array &a);
-  array(array &&a)
-  noexcept;
+  array(array &&a) noexcept;
   ~array() = default;
 
   iterator begin();
