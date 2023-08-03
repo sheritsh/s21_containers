@@ -20,7 +20,7 @@ class array {
   array(const array &a);
   array(array &&a)
   noexcept;
-  ~array();
+  ~array() = default;
 
   iterator begin();
   iterator end();
@@ -38,11 +38,11 @@ class array {
   size_type size();
   size_type max_size();
 
-  void swap(array &other);
+  void swap(array &a);
   void fill(const_reference value);
 
-  array &operator=(const array &other);
-  array &operator=(array &&other) noexcept;
+  array &operator=(const array &a);
+  array &operator=(array &&a) noexcept;
   reference operator[](size_type pos);
   const_reference operator[](size_type pos) const;
 
@@ -53,6 +53,6 @@ class array {
 
 }  // namespace s21
 
-//#include "s21_array.tpp"
+#include "s21_array.tpp"
 
 #endif //CPP2_S21_CONTAINERS_1_S21_ARRAY_H
