@@ -4,7 +4,7 @@
 #include <iostream>
 #include <limits>
 
-#include "deque.h"
+#include "../deque/deque.h"
 
 namespace s21 {
 template <class T>

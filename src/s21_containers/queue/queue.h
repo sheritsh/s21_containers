@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-#include "deque.h"
+#include "../deque/deque.h"
 
 namespace s21 {
 template <class T, class Container = deque<T>>
@@ -31,7 +31,7 @@ class queue {
 
   template <class... Args>
   void insert_many_back(Args &&...args);
-  
+
   queue &operator=(const queue &other);
   queue &operator=(queue &&other) noexcept;
 

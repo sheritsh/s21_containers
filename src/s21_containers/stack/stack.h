@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-#include "deque.h"
+#include "../deque/deque.h"
 
 namespace s21 {
 template <class T, class Container = deque<T>>
