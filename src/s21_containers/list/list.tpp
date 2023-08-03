@@ -1,7 +1,5 @@
 namespace s21 {
 
-// Iterator
-
 template <class T>
 list<T>::ListIterator::ListIterator(){};
 
@@ -85,8 +83,6 @@ bool list<T>::ListIterator::operator>=(const ListIterator& other) const {
   return node_ >= other.node_;
 }
 
-// Const Iterator
-
 template <class T>
 list<T>::ListConstIterator::ListConstIterator() : ListIterator() {}
 
@@ -99,8 +95,6 @@ typename list<T>::const_reference list<T>::ListConstIterator::operator*()
     const {
   return ListIterator::operator*();
 }
-
-// Iterator methods
 
 template <class T>
 typename list<T>::iterator list<T>::begin() {
@@ -122,8 +116,6 @@ template <class T>
 typename list<T>::const_iterator list<T>::cend() const {
   return const_iterator(this->list_.tail->next, this->list_.tail);
 }
-
-// List
 
 template <class T>
 list<T>::list() : deque<T>() {}
