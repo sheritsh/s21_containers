@@ -75,7 +75,7 @@ s21::array<int, 5> arr = {1, 2, 3, 4, 5};
 7. __Unit Testing:__
 - Develop comprehensive unit tests using the GTest library.
 - Ensure test coverage for all container methods and edge cases.
-8. __STL Logic and Exception Handling:
+8. __STL Logic and Exception Handling:__
 - Follow the logic of the Standard Template Library ([STL](#the-containers-of-the-standart-template-library)) for checks, memory handling, and behavior in abnormal situations.
 - Implement appropriate exception handling for error scenarios.
 9. __s21_containers.h Library:__
