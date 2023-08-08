@@ -26,7 +26,7 @@ Russian version of README you can find [here](./README_RUS.md)
 | [![sheritsh_avatar](misc/images/sheritsh.png)](https://github.com/sheritsh)<br /> <center>[// sheritsh](https://github.com/sheritsh)</center> | [vector](./src/s21_containers/vector/) <br /> [array](./src/s21_containersplus/array/) <br /> |
 | [![bradamar_avatar](misc/images/bradamar.png)](https://github.com/YaBear)<br /> <center>[// bradamar](https://github.com/YaBear)</center>| [deque](./src/s21_containers/deque/) <br /> [list](./src/s21_containers/list/) <br /> [queue](./src/s21_containers/queue/) <br /> [stack](./src/s21_containers/stack/) |
 | [![oznakban_avatar](misc/images/oznakban.png)](https://github.com/rodion-21-kzn)<br /> <center>[// oznakban](https://github.com/rodion-21-kzn)</center>| [AVLTree](./src/s21_containers/AVLTree/) <br /> [set](./src/s21_containers/set/) <br /> [map](./src/s21_containers/map/) |
-| [![melodiea_avatar](misc/images/melodiea.png)](https://github.com/)<br /> <center>[// melodiea](https://github.com/)</center>| - Project and code supporting <br /> - Developments on vector and list <br /> - [Test coverage](./src/tests/) |
+| [![melodiea_avatar](misc/images/melodiea.png)](https://github.com/Mihal-Urich)<br /> <center>[// melodiea](https://github.com/Mihal-Urich)</center>| - Project and code supporting <br /> - Developments on vector and list <br /> - [Test coverage](./src/tests/) |
 
 ## Getting Started
 
