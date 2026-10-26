@@ -16,7 +16,7 @@ Russian version of README you can find [here](./README_RUS.md)
    2.2. [Steps to install and useful commands](#steps-to-install-and-useful-commands)
 3. [Technical specifications](#technical-specifications)
 4. [Test results](#test-results)
-5. [The containers of the Standart Template Library(STL)](#the-containers-of-the-standart-template-library)
+5. [The containers of the Standard Template Library(STL)](#the-containers-of-the-standard-template-library)
 
 
 ## Contributors
@@ -108,6 +108,6 @@ Using the Google Test Framework, all containers and their methods, including err
 
 ![test_results](./misc/images/test_results.png)
 
-## The containers of the Standart Template Library
+## The containers of the Standard Template Library
 
 ![uml](./materials/STL_UML.png)

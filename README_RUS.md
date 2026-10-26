@@ -13,7 +13,7 @@
    2.2. [Шаги установки и полезные команды](#шаги-установки-и-полезные-команды)
 3. [Техническое задание](#техническое-задание)
 4. [Результаты тестов](#результаты-тестов)
-5. [Standart Template Library (STL)](#standart-template-library-stl)
+5. [Standard Template Library (STL)](#standard-template-library-stl)
 
 
 ## Участники
@@ -73,7 +73,7 @@ s21::array<int, 5> arr = {1, 2, 3, 4, 5};
 - Разработайте полное модульное тестирование с использованием библиотеки GTest.
 - Обеспечьте покрытие тестами для всех методов контейнеров и крайних случаев.
 8. __Логика STL и обработка исключений:__
-- Следуйте логике библиотеки Standart Template Library ([STL](#standart-template-library-stl)) для проверок, обработки памяти и поведения в нестандартных ситуациях.
+- Следуйте логике библиотеки Standard Template Library ([STL](#standard-template-library-stl)) для проверок, обработки памяти и поведения в нестандартных ситуациях.
 - Реализуйте соответствующую обработку исключений для ситуаций ошибок.
 9. __Библиотека s21_containers.h:__
 - Реализуйте заголовочный файл s21_containers.h.
@@ -105,6 +105,6 @@ s21::array<int, 5> arr = {1, 2, 3, 4, 5};
 
 ![test_results](./misc/images/test_results.png)
 
-## Standart Template Library (STL)
+## Standard Template Library (STL)
 
 ![uml](./materials/STL_UML.png)
